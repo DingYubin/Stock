@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.app.FragmentTabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b2b2b2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"/>
+
+            <FrameLayout
+                android:id="@+id/realtabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/main_radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/tab_widget_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="2dip">
+
+            <RadioButton
+                android:id="@+id/portfolio_button"
+                style="@style/tab_item_background"
+                android:drawableTop="@drawable/tab_icon1"
+                android:text="自选" />
+
+            <RadioButton
+                android:id="@+id/news_button"
+                style="@style/tab_item_background"
+                android:drawableTop="@drawable/tab_icon2"
+                android:text="咨询" />
+
+            <RadioButton
+                android:id="@+id/markets_button"
+                style="@style/tab_item_background"
+                android:drawableTop="@drawable/tab_icon5"
+                android:text="行情" />
+
+            <RadioButton
+                android:id="@+id/me_button"
+                style="@style/tab_item_background"
+                android:drawableTop="@drawable/tab_icon4"
+                android:text="个人" />
+
+        </RadioGroup>
+    </android.support.v4.app.FragmentTabHost>
+
+</LinearLayout>
