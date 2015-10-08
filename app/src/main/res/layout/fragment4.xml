@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-              android:weightSum="1">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" >
 
-    <TextView
-        android:id="@+id/textView111"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="个人"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <ImageView
+        android:layout_width="82.0dip"
+        android:layout_height="82.0dip"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"
+        android:src="@drawable/me_head_bg" />
 
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/icon"
-        android:id="@+id/imageButton"
-        android:layout_gravity="center_horizontal"
-        />
-</LinearLayout>
+    <ruifu.com.shares.widget.CircularImage
+        android:id="@+id/cover_user_photo"
+        android:layout_width="74.0dip"
+        android:layout_height="74.0dip"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

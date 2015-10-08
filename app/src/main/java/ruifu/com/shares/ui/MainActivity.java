@@ -1,4 +1,4 @@
-package ruifu.com.shares;
+package ruifu.com.shares.ui;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import ruifu.com.shares.R;
 
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 

@@ -1,7 +1,9 @@
-package ruifu.com.shares;
+package ruifu.com.shares.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -24,8 +27,10 @@ import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.sso.UMSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 
+import java.io.File;
 import java.util.Map;
 
+import ruifu.com.shares.R;
 import ruifu.com.shares.commons.Constants;
 
 //import com.umeng.socialize.sso.TencentWBSsoHandler;
@@ -36,22 +41,22 @@ public class LoginActivity extends Activity implements OnClickListener {
     private UMSocialService mController = UMServiceFactory.
             getUMSocialService(Constants.DESCRIPTOR);
 
-
-    private Button qqLoginButton;
+    private SharedPreferences sp;
+    private ImageButton qqLoginButton;
     private Button qqLogoutButton;
-    private Button wechatLoginButton;
+    private ImageButton wechatLoginButton;
     private Button wechatLogoutButton;
     private Button shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login);
 
-        qqLoginButton = (Button) this.findViewById(R.id.btn_qq_login);
+        qqLoginButton = (ImageButton) this.findViewById(R.id.btn_qq_login);
         qqLogoutButton = (Button) this.findViewById(R.id.btn_qq_logout);
         shareButton = (Button) this.findViewById(R.id.btn_share);
-        wechatLoginButton = (Button) this.findViewById(R.id.btn_wechat_login);
+        wechatLoginButton = (ImageButton) this.findViewById(R.id.btn_wechat_login);
         wechatLogoutButton = (Button) this.findViewById(R.id.btn_wechat_logout);
 
 
@@ -77,15 +82,10 @@ public class LoginActivity extends Activity implements OnClickListener {
         // 添加腾讯微博SSO授权
 //        mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
 
-
         // 添加微信、微信朋友圈平台
         addWXPlatform();
-
         // 添加QQ、QZone平台
        addQQQZonePlatform();
-
-
-
 
     }
 
@@ -104,7 +104,6 @@ public class LoginActivity extends Activity implements OnClickListener {
                 appId, appKey);
         qqSsoHandler.setTargetUrl("http://www.umeng.com");
         qqSsoHandler.addToSocialSDK();
-
         // 添加QZone平台
 //        QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(
 //                LoginActivity.this, appId, appKey);
@@ -114,9 +113,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 
     private void addWXPlatform() {
         // 注意：在微信授权的时候，必须传递appSecret
-        // wx967daebe835fbeac是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
-        String appId = "wx967daebe835fbeac";
-        String appSecret = "5bb696d9ccd75a38c8a0bfe0675559b3";
+        // wx2622214496f26933是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
+        String appId = "wx2622214496f26933";
+        String appSecret = "fc6a7b6348c3eb7e1ec0dd8d1ccefb27";
         // 添加微信平台
         UMWXHandler wxHandler = new UMWXHandler(LoginActivity.this, appId,
                 appSecret);
@@ -124,13 +123,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 //        wxHandler.setRefreshTokenAvailable(false);
         wxHandler.addToSocialSDK();
 
-
         // 支持微信朋友圈
         UMWXHandler wxCircleHandler = new UMWXHandler(LoginActivity.this,
                 appId, appSecret);
         wxCircleHandler.setToCircle(true);
         wxCircleHandler.addToSocialSDK();
-
     }
 
     @Override
@@ -201,6 +198,7 @@ public class LoginActivity extends Activity implements OnClickListener {
                         if (!TextUtils.isEmpty(uid)) {
                             // uid不为空，获取用户信息
                             getUserInfo(platform);
+
                         } else {
                             Toast.makeText(LoginActivity.this, "授权失败...",
                                     Toast.LENGTH_LONG).show();
@@ -238,19 +236,37 @@ public class LoginActivity extends Activity implements OnClickListener {
 
                     @Override
                     public void onComplete(int status, Map<String, Object> info) {
-                        String showText = "";
-                        if (status == StatusCode.ST_CODE_SUCCESSED) {
-                            showText = "用户名：" +
-                                    info.get("screen_name").toString();
-                            Log.d("LoginActivity", "LoginActivity" + info.toString());
-                        } else {
-                            showText = "获取用户信息失败";
-                        }
+//                        String showText = "";
+//                        if (status == StatusCode.ST_CODE_SUCCESSED) {
+//                            showText = "用户名：" +
+//                                info.get("screen_name").toString();
+//                        Log.d("LoginActivity", "LoginActivity" + info.toString());
+//                    } else {
+//                        showText = "获取用户信息失败";
+//                    }
 
                         if (info != null) {
-                            Toast.makeText(LoginActivity.this, info.toString(),
-                                    Toast.LENGTH_SHORT).show();
+
+                            sp = getSharedPreferences("users", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("unionid", info.get("unionid").toString());
+                            editor.putString("country", info.get("country").toString());
+                            editor.putString("city", info.get("city").toString());
+                            editor.putString("province", info.get("province").toString());
+                            editor.putString("headimgurl", info.get("headimgurl").toString());
+                            editor.putString("sex", info.get("sex").toString());
+                            editor.putString("openid", info.get("openid").toString());
+                            editor.commit();
+
+                            Log.i("LoginActivity", "unionid ：" + info.get("unionid").toString());
+                            Log.i("LoginActivity", "LoginActivity ：" + info.toString());
+//                            Toast.makeText(LoginActivity.this, info.toString(),
+//                                    Toast.LENGTH_SHORT).show();
                         }
+
+                        System.out.println(sp.getString("headimgurl", ""));
+                        Toast.makeText(LoginActivity.this, sp.getString("headimgurl", ""),
+                                Toast.LENGTH_SHORT).show();
                     }
 
                 });
@@ -275,6 +291,7 @@ public class LoginActivity extends Activity implements OnClickListener {
                     showText = "解除" + platform.toString() + "平台授权失败[" + status + "]";
                 }
                 Toast.makeText(LoginActivity.this, showText, Toast.LENGTH_SHORT).show();
+//                cleanInternalCache(getApplicationContext());
             }
         });
     }
@@ -288,6 +305,20 @@ public class LoginActivity extends Activity implements OnClickListener {
                 resultCode);
         if (ssoHandler != null) {
             ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+        }
+    }
+
+    /** * 清除本应用内部缓存(/data/data/com.xxx.xxx/cache) * * @param context */
+    public static void cleanInternalCache(Context context) {
+        deleteFilesByDirectory(context.getCacheDir());
+    }
+
+    /** * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理 * * @param directory */
+    private static void deleteFilesByDirectory(File directory) {
+        if (directory != null && directory.exists() && directory.isDirectory()) {
+            for (File item : directory.listFiles()) {
+                item.delete();
+            }
         }
     }
 }

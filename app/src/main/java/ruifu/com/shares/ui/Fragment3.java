@@ -1,4 +1,4 @@
-package ruifu.com.shares;
+package ruifu.com.shares.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ruifu.com.shares.BaseFragment;
+import ruifu.com.shares.R;
+
 /**
  * Created by dyb on 15/9/27.
  */
-public class Fragment3 extends BaseFragment{
+public class Fragment3 extends BaseFragment {
     public static BaseFragment newInstance(int index) {
         BaseFragment fragment = new Fragment3();
         Bundle args = new Bundle();
