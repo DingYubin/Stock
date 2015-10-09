@@ -1,6 +1,7 @@
 package ruifu.com.shares.ui;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,5 +15,8 @@ public class SplashActivity extends Activity{
     private LinearLayout ll_splash;
     private String strVersion;
 
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }

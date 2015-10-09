@@ -60,6 +60,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     }
 
     @Override
+    public void fillData() {
+
+    }
+
+    @Override
     public void addListener() {
 
         qqLoginButton.setOnClickListener(this);
@@ -70,15 +75,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     }
 
     @Override
-    public void fillData() {
-
-    }
-
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        super.onCreate(savedInstanceState);
+
+
 
         // 配置需要分享的相关平台
         configPlatforms();
