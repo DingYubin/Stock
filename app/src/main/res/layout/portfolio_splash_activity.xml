@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/splash_layout_view"
+                android:background="@drawable/splash_bg"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@+id/splash_logo_view"
+        android:background="@drawable/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170.0dip"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@null" />
+
+    <ImageView android:id="@+id/splash_skip_view"
+               android:background="@drawable/splash_skip"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20.0dip"
+               android:layout_marginRight="20.0dip"
+               android:layout_alignParentRight="true"
+               android:contentDescription="@null" />
+
+    <TextView android:textSize="13.0sp"
+              android:textColor="#ff7d7d7d"
+              android:id="@+id/splash_version_words"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10.0dip"
+              android:layout_marginRight="10.0dip"
+              android:layout_marginBottom="70.0dip"
+              android:text="@string/splash_app_version"
+              android:shadowColor="#ff020202"
+              android:shadowDx="2.0"
+              android:shadowDy="2.0"
+              android:shadowRadius="1.0"
+              android:layout_alignParentBottom="true"
+              android:layout_centerHorizontal="true" />
+
+    <TextView android:textSize="13.0sp"
+              android:textColor="#ff7d7d7d"
+              android:id="@+id/splash_copyright_words"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10.0dip"
+              android:layout_marginRight="10.0dip"
+              android:layout_marginBottom="40.0dip"
+              android:shadowColor="#ff020202"
+              android:shadowDx="2.0"
+              android:shadowDy="2.0"
+              android:shadowRadius="1.0"
+              android:layout_alignParentBottom="true"
+              android:layout_centerHorizontal="true" />
+
+    <ImageView android:id="@+id/first_show_image"
+               android:visibility="gone"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="8.0dip"
+               android:layout_above="@id/splash_version_words"
+               android:layout_centerHorizontal="true"
+               android:contentDescription="@null" />
+
+  <RelativeLayout android:id="@+id/click_layout_view"
+                  android:layout_width="fill_parent"
+                  android:layout_height="114.0dip"
+                  android:layout_marginBottom="90.0dip"
+                  android:layout_alignParentBottom="true" />
+</RelativeLayout>

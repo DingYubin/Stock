@@ -30,12 +30,13 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import java.io.File;
 import java.util.Map;
 
+import ruifu.com.shares.BaseActivity;
 import ruifu.com.shares.R;
 import ruifu.com.shares.commons.Constants;
 
 //import com.umeng.socialize.sso.TencentWBSsoHandler;
 
-public class LoginActivity extends Activity implements OnClickListener {
+public class LoginActivity extends BaseActivity implements OnClickListener {
 
     // 整个平台的Controller,负责管理整个SDK的配置、操作等处理
     private UMSocialService mController = UMServiceFactory.
@@ -49,22 +50,35 @@ public class LoginActivity extends Activity implements OnClickListener {
     private Button shareButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
-
+    public void setUpView() {
         qqLoginButton = (ImageButton) this.findViewById(R.id.btn_qq_login);
         qqLogoutButton = (Button) this.findViewById(R.id.btn_qq_logout);
         shareButton = (Button) this.findViewById(R.id.btn_share);
         wechatLoginButton = (ImageButton) this.findViewById(R.id.btn_wechat_login);
         wechatLogoutButton = (Button) this.findViewById(R.id.btn_wechat_logout);
 
+    }
+
+    @Override
+    public void addListener() {
 
         qqLoginButton.setOnClickListener(this);
         qqLogoutButton.setOnClickListener(this);
         shareButton.setOnClickListener(this);
         wechatLoginButton.setOnClickListener(this);
         wechatLogoutButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void fillData() {
+
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
 
         // 配置需要分享的相关平台
         configPlatforms();

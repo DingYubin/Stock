@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 /**
  * Created by dyb on 15/9/27.
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     private int indext;
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/rl_nav_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/transparent"
+        android:visibility="invisible" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#AA111111"
+            android:gravity="center"
+            android:padding="8dip" >
+
+            <ProgressBar
+                android:id="@+id/pb_nav_progress"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_marginBottom="6dip"
+                android:layout_marginTop="6dip"
+                android:indeterminate="true" />
+
+            <TextView
+                android:id="@+id/tv_nav_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dip"
+                android:textColor="@android:color/black"
+                android:textSize="24px" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</merge>
