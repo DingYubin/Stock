@@ -26,7 +26,8 @@ public class Fragment2 extends BaseFragment {
     private FragmentTabHost mTabHost;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
     }
 

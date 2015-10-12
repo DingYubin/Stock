@@ -8,15 +8,15 @@ import android.support.v4.app.Fragment;
  */
 public abstract class BaseFragment extends Fragment {
 
-    private int indext;
+    private int index;
 
-    public int getIndext(){
+    public int getIndex() {
 
-        return indext;
+        return index;
     }
 
 
     public void setIndex(int index) {
-        this.indext = indext;
+        this.index = index;
     }
 }
