@@ -16,7 +16,7 @@ import ruifu.com.shares.R;
  * Created by 王群 on 2015/10/12.
  */
 public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.ViewHolder> {
-    private List<String> stockNameList = new ArrayList<>();
+    private List<String> stockNameList = new ArrayList();
     private final LayoutInflater layoutInflater;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView stockNameView;
