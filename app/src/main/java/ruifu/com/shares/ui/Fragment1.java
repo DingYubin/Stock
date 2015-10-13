@@ -8,13 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TextView;
 
 import ruifu.com.shares.BaseFragment;
 import ruifu.com.shares.R;
 import ruifu.com.shares.adapter.PortfolioAdapter;
+import ruifu.com.shares.data.Stock;
 
 public class Fragment1 extends BaseFragment {
     public static BaseFragment newInstance(int index) {
@@ -47,8 +45,21 @@ public class Fragment1 extends BaseFragment {
         portfolioLayoutManager = new LinearLayoutManager(getContext());
         portfolioRecyclerView.setLayoutManager(portfolioLayoutManager);
         portfolioAdapter = new PortfolioAdapter(getContext());
+        Stock[] stocks = new Stock[4];
+        stocks[0] = new Stock("平安银行", "000001");
+        stocks[0].setPrice(1235);
+        stocks[0].setChangeRate(825);
+        stocks[1] = new Stock("招商银行", "600036");
+        stocks[1].setPrice(1806);
+        stocks[1].setChangeRate(-71);
+        stocks[2] = new Stock("五粮液", "000858");
+        stocks[2].setPrice(2573);
+        stocks[2].setDelist(true);
+        stocks[3] = new Stock("中信银行", "601998");
+        stocks[3].setPrice(618);
+        stocks[3].setChangeRate(0);
         for (int i = 0; i < 50; i++) {
-            portfolioAdapter.addStock("test");
+            portfolioAdapter.addStock(stocks[i % 4]);
         }
         portfolioRecyclerView.setAdapter(portfolioAdapter);
         return layoutView;

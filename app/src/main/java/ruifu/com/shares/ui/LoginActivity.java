@@ -1,10 +1,10 @@
 package ruifu.com.shares.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -12,7 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -27,22 +29,70 @@ import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.sso.UMSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 
-import java.io.File;
+import org.json.JSONObject;
+
 import java.util.Map;
 
 import ruifu.com.shares.BaseActivity;
+import ruifu.com.shares.Global;
 import ruifu.com.shares.R;
+import ruifu.com.shares.biz.ThirdAuthorizationBiz;
 import ruifu.com.shares.commons.Constants;
 
 //import com.umeng.socialize.sso.TencentWBSsoHandler;
 
 public class LoginActivity extends BaseActivity implements OnClickListener {
+    private final static String TAG = "LoginActivity";
+    private Context context;
+    private SharedPreferences sp;
+    ThirdAuthorizationBiz thirdAuthorizationBiz;
+
+    private Button bt_ret;
+    private Button bt_confiem;
+    private EditText et_login_name;
+    private EditText et_login_pass;
+    private TextView tv_forget_pass;
+
+
+    public Handler myHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+//            hiderLoading();
+            int resId = 0;
+            switch (msg.what) {
+
+                case Global.LOGIN_EMPTY:
+
+                    resId = R.string.login_pwd_empty;
+                    break;
+                case Global.LOGIN_PASS_TOSHORT:
+                    resId = R.string.login_pass_to_short;
+                    break;
+                case Global.SUCCESS:
+                    resId = R.string.login_success;
+                    finish();
+                    break;
+                case Global.FAIL:
+                    resId = R.string.login_fail;
+                    break;
+                case Global.NET_PROBLEM:
+                    resId = R.string.login_net;
+                    break;
+                default:
+                    break;
+            }
+            if (resId != 0) {
+                showToast(resId);
+            }
+            super.handleMessage(msg);
+        }
+    };
+
 
     // 整个平台的Controller,负责管理整个SDK的配置、操作等处理
     private UMSocialService mController = UMServiceFactory.
             getUMSocialService(Constants.DESCRIPTOR);
 
-    private SharedPreferences sp;
+
     private ImageButton qqLoginButton;
     private Button qqLogoutButton;
     private ImageButton wechatLoginButton;
@@ -51,12 +101,21 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 
     @Override
     public void setUpView() {
+        //手机密码登录
+        bt_ret = (Button) findViewById(R.id.nav_bt_ret);
+        bt_confiem = (Button) findViewById(R.id.nav_bt_confirm);
+        et_login_name = (EditText) findViewById(R.id.nav_et_login_name);
+        et_login_pass = (EditText) findViewById(R.id.nav_et_login_pass);
+        tv_forget_pass = (TextView) findViewById(R.id.nav_tv_forget_pass);
+
+        //第三方授权登录
         qqLoginButton = (ImageButton) this.findViewById(R.id.btn_qq_login);
         qqLogoutButton = (Button) this.findViewById(R.id.btn_qq_logout);
         shareButton = (Button) this.findViewById(R.id.btn_share);
         wechatLoginButton = (ImageButton) this.findViewById(R.id.btn_wechat_login);
         wechatLogoutButton = (Button) this.findViewById(R.id.btn_wechat_logout);
 
+        sp = getSharedPreferences("users", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -67,19 +126,25 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     @Override
     public void addListener() {
 
+        bt_ret.setOnClickListener(this);
+        bt_confiem.setOnClickListener(this);
+        et_login_name.setOnClickListener(this);
+        et_login_pass.setOnClickListener(this);
+        tv_forget_pass.setOnClickListener(this);
+
         qqLoginButton.setOnClickListener(this);
         qqLogoutButton.setOnClickListener(this);
         shareButton.setOnClickListener(this);
         wechatLoginButton.setOnClickListener(this);
         wechatLogoutButton.setOnClickListener(this);
+
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.login);
         super.onCreate(savedInstanceState);
-
-
 
         // 配置需要分享的相关平台
         configPlatforms();
@@ -170,14 +235,31 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_qq_login: // qq登录
-                login(SHARE_MEDIA.QQ);
+            case R.id.nav_bt_ret://返回
+                finish();
                 break;
-            case R.id.btn_wechat_login: // 微信登陆
-                login(SHARE_MEDIA.WEIXIN);
+            case R.id.nav_bt_confirm://确定登录
+                final String login = et_login_name.getText().toString().trim();
+                final String pwd = et_login_pass.getText().toString().trim();
+                login(login, pwd);
+                break;
+            case R.id.nav_tv_forget_pass://忘记密码
+                String loginname = et_login_name.getText().toString().trim();
+//                Intent intent = new Intent(LoginActivity.this,FindPassActivity.class);
+//                if(!TextUtils.isEmpty(loginname)){
+//                    intent.putExtra("loginname", loginname);
+//                }
+//                startActivity(intent);
+//                finish();
+                break;
+            case R.id.btn_qq_login: // qq登录
+                qqLogin(SHARE_MEDIA.QQ);
                 break;
             case R.id.btn_qq_logout: // 注销qq账号
                 logout(SHARE_MEDIA.QQ);
+                break;
+            case R.id.btn_wechat_login: // 微信登陆
+                wxLogin(SHARE_MEDIA.WEIXIN);
                 break;
             case R.id.btn_wechat_logout:
                 logout(SHARE_MEDIA.WEIXIN); // 注销微信账号
@@ -187,18 +269,35 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         }
     }
 
+
+    /**
+     *账号密码登录
+     */
+    private void login(final String login, final String pwd){
+        if(TextUtils.isEmpty(login)|| TextUtils.isEmpty(pwd)){
+            myHandler.sendEmptyMessage(Global.LOGIN_EMPTY);
+            return;
+        }
+        if(pwd.length()<6||pwd.length()>40){
+            myHandler.sendEmptyMessage(Global.LOGIN_PASS_TOSHORT);
+            return;
+        }
+        showLoading("正在验证登录...");
+
+    }
+
     /**
      * 授权。如果授权成功，则获取用户信息
      *
      * @param platform
+     * 微信授权登录
+     * 微信则是以unionid,为了便于传值，我将这两个值同意转换成useid
      */
 
-    private void login(final SHARE_MEDIA platform) {
+    private void wxLogin(final SHARE_MEDIA platform) {
         // TODO Auto-generated method stub
         mController.doOauthVerify(LoginActivity.this, platform,
                 new SocializeListeners.UMAuthListener() {
-
-
                     @Override
                     public void onStart(SHARE_MEDIA platform) {
                         // TODO Auto-generated method stub
@@ -211,12 +310,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                         // 获取uid
                         String uid = value.getString("uid");
                         if (!TextUtils.isEmpty(uid)) {
-                            // uid不为空，获取用户信息
-                            getUserInfo(platform);
-
-                        } else {
-                            Toast.makeText(LoginActivity.this, "授权失败...",
-                                    Toast.LENGTH_LONG).show();
+                            getWXUserInfo(platform);
                         }
                     }
 
@@ -232,15 +326,18 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                         Toast.makeText(LoginActivity.this, "授权取消",
                                 Toast.LENGTH_SHORT).show();
                     }
+
+
                 });
     }
 
+
     /**
-     * 获取用户信息
+     * 获取wx用户信息
      *
      * @param platform
      */
-    private void getUserInfo(SHARE_MEDIA platform) {
+    private void getWXUserInfo(SHARE_MEDIA platform) {
         mController.getPlatformInfo(LoginActivity.this, platform,
                 new UMDataListener() {
 
@@ -251,37 +348,130 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 
                     @Override
                     public void onComplete(int status, Map<String, Object> info) {
-//                        String showText = "";
-//                        if (status == StatusCode.ST_CODE_SUCCESSED) {
-//                            showText = "用户名：" +
-//                                info.get("screen_name").toString();
-//                        Log.d("LoginActivity", "LoginActivity" + info.toString());
-//                    } else {
-//                        showText = "获取用户信息失败";
-//                    }
 
                         if (info != null) {
+                            JSONObject json = new JSONObject(info);
+                            Log.i("LoginActivity", "userid = " +info.get("unionid").toString());
+                            Log.i("LoginActivity", "headimgurl = " +info.get("headimgurl").toString());
+                            Log.i("LoginActivity", "info = " + json.toString());
 
-                            sp = getSharedPreferences("users", Activity.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sp.edit();
-                            editor.putString("unionid", info.get("unionid").toString());
-                            editor.putString("country", info.get("country").toString());
-                            editor.putString("city", info.get("city").toString());
-                            editor.putString("province", info.get("province").toString());
-                            editor.putString("headimgurl", info.get("headimgurl").toString());
-                            editor.putString("sex", info.get("sex").toString());
-                            editor.putString("openid", info.get("openid").toString());
-                            editor.commit();
+                            sp.edit().putString("userid", info.get("unionid").toString())
+                                    .putString("headimgurl", info.get("headimgurl").toString())
+                                    .putString("info", json.toString())
+                                    .putString("third_author","weixin").commit();
+                            thirdAuthorizationBiz = new ThirdAuthorizationBiz(LoginActivity.this);
+                            new Thread() {
+                                @Override
+                                public void run() {
+                                    super.run();
+                                    int result = thirdAuthorizationBiz.login();
+                                    myHandler.sendEmptyMessage(result);
+                                }
+                            }.start();
+                            Log.i("LoginActivity", "授权有结果了1");
 
-                            Log.i("LoginActivity", "unionid ：" + info.get("unionid").toString());
-                            Log.i("LoginActivity", "LoginActivity ：" + info.toString());
-//                            Toast.makeText(LoginActivity.this, info.toString(),
-//                                    Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Log.d(TAG, "发生错误：" + status);
                         }
 
-                        System.out.println(sp.getString("headimgurl", ""));
-                        Toast.makeText(LoginActivity.this, sp.getString("headimgurl", ""),
+                    }
+
+                });
+    }
+
+
+    /**
+     * 授权。如果授权成功，则获取用户信息
+     *
+     * @param platform
+     * QQ授权登录
+     * qq授权登录返回的值是openid作为标识,为了便于传值，我将这两个值同意转换成useid
+     */
+    String openid = "";
+    private void qqLogin(final SHARE_MEDIA platform) {
+        // TODO Auto-generated method stub
+        mController.doOauthVerify(LoginActivity.this, platform,
+                new SocializeListeners.UMAuthListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA platform) {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(LoginActivity.this, "授权开始",
                                 Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onComplete(Bundle value, SHARE_MEDIA platform) {
+                        // 获取uid
+                        String uid = value.getString("uid");
+                        openid = value.getString("openid");
+                        if (!TextUtils.isEmpty(uid)) {
+                            getQQUserInfo(platform);
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(SocializeException e, SHARE_MEDIA platform) {
+                        Toast.makeText(LoginActivity.this, "授权失败",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA platform) {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(LoginActivity.this, "授权取消",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+
+                });
+    }
+
+    /**
+     * 获取qq用户信息
+     *
+     * @param platform
+     */
+    private void getQQUserInfo(SHARE_MEDIA platform) {
+        mController.getPlatformInfo(LoginActivity.this, platform,
+                new UMDataListener() {
+
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onComplete(int status, Map<String, Object> info) {
+
+                        if (info != null) {
+                            JSONObject json = new JSONObject(info);
+
+                            Log.i("LoginActivity", "userid = " +openid);
+                            Log.i("LoginActivity", "profile_image_url = " + info.get("profile_image_url").toString());
+                            Log.i("LoginActivity", "info = " + json.toString());
+
+                            sp.edit().putString("userid", openid).
+                                    putString("headimgurl", info.get("profile_image_url").toString())
+                                    .putString("info", json.toString())
+                                    .putString("third_author", "qq").commit();
+                            thirdAuthorizationBiz = new ThirdAuthorizationBiz(LoginActivity.this);
+
+                            new Thread(){
+                                @Override
+                                public void run() {
+                                    super.run();
+                                    int result = thirdAuthorizationBiz.login();
+                                    myHandler.sendEmptyMessage(result);
+                                }
+                            }.start();
+
+                            Log.i("LoginActivity", "授权有结果了2");
+
+                        }else{
+                            Log.d(TAG,"发生错误："+status);
+                        }
                     }
 
                 });
@@ -306,7 +496,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                     showText = "解除" + platform.toString() + "平台授权失败[" + status + "]";
                 }
                 Toast.makeText(LoginActivity.this, showText, Toast.LENGTH_SHORT).show();
-//                cleanInternalCache(getApplicationContext());
             }
         });
     }
@@ -321,19 +510,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
         if (ssoHandler != null) {
             ssoHandler.authorizeCallBack(requestCode, resultCode, data);
         }
+        System.out.println("接受到了信息2");
+        Log.i(TAG, "接受到了信息2");
     }
 
-    /** * 清除本应用内部缓存(/data/data/com.xxx.xxx/cache) * * @param context */
-    public static void cleanInternalCache(Context context) {
-        deleteFilesByDirectory(context.getCacheDir());
-    }
-
-    /** * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理 * * @param directory */
-    private static void deleteFilesByDirectory(File directory) {
-        if (directory != null && directory.exists() && directory.isDirectory()) {
-            for (File item : directory.listFiles()) {
-                item.delete();
-            }
-        }
-    }
 }

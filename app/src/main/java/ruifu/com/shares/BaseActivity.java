@@ -64,6 +64,9 @@ public abstract class BaseActivity extends Activity{
     public void showToast(String string,int time){
         Toast.makeText(this, string, time).show();
     }
+    public void showToast(int resId ){
+        Toast.makeText(this,resId,Toast.LENGTH_SHORT).show();
+    }
     public void showToast(int resId,int time){
         Toast.makeText(this, resId ,time).show();
     }

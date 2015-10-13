@@ -67,14 +67,19 @@
         android:orientation="horizontal"
         android:layout_below="@+id/stockBar"
         android:id="@+id/stockTitle">
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#406FAA"
-            android:text="全部股票"
-            android:gravity="center"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#406FAA"
+                android:text="全部股票"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"/>
+        </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -90,6 +95,7 @@
             android:textColor="#406FAA"
             android:text="涨跌幅"
             android:gravity="center"
+            android:paddingLeft="32dp"
             android:layout_weight="1"/>
     </LinearLayout>
 

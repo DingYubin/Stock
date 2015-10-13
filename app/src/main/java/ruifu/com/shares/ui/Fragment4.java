@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import ruifu.com.shares.BaseFragment;
+import ruifu.com.shares.Global;
 import ruifu.com.shares.R;
 import ruifu.com.shares.util.NormalLoadPictrue;
 import ruifu.com.shares.widget.CircularImage;
@@ -80,8 +81,14 @@ public class Fragment4 extends BaseFragment implements OnClickListener {
         switch (v.getId())
         {
             case R.id.cover_user_photo:
-                Intent intent = new Intent(getActivity(),LoginActivity.class);
-                startActivity(intent);
+                int result = sp.getInt("status",-1);
+                if (result== Global.SUCCESS){
+                    Intent intent = new Intent(getActivity(), ApproveActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
                 break;
             default:
                 break;
