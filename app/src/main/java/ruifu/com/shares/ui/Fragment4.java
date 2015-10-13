@@ -37,11 +37,12 @@ public class Fragment4 extends BaseFragment implements OnClickListener {
     CircularImage cover_user_photo;
 
     SharedPreferences sp;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sp = getActivity().getSharedPreferences("users", Activity.MODE_PRIVATE);
-        Log.i("Fragment4","onCreate");
+
     }
 
     @Override
