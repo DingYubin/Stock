@@ -1,4 +1,4 @@
-package ruifu.com.shares.ui.adapter;
+package ruifu.com.shares.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

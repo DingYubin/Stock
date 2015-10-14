@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="personal_divider_bg">#ffeeeeef</color>
+    <color name="personal_item_divider_edage_color">#ffc3cdd4</color>
+    <color name="personal_item_selected_bg">#ffd0d6dd</color>
+    <color name="personal_item_unselect_bg">#ffffffff</color>
+    <color name="personal_itemTitle_color">#ff000000</color>
+</resources>
