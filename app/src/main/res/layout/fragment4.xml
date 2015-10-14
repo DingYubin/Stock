@@ -1,20 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ruifu.com.shares.widget.PullScrollView android:id="@+id/scroll_view"
+                                        xmlns:android="http://schemas.android.com/apk/res/android"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@android:color/white"
+                                        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/pull_img"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="-50dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/personal_main_top_img"/>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical" >
+                android:layout_centerInParent="true">
 
-    <ImageView
-        android:layout_width="82.0dip"
-        android:layout_height="82.0dip"
-        android:layout_centerInParent="true"
-        android:contentDescription="@null"
-        android:src="@drawable/me_head_bg" />
+                <FrameLayout
+                    android:id="@+id/frame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
 
-    <ruifu.com.shares.widget.CircularImage
-        android:id="@+id/cover_user_photo"
-        android:layout_width="74.0dip"
-        android:layout_height="74.0dip"
-        android:layout_centerInParent="true" />
+                    <ImageView
+                        android:id="@+id/cover_user_outphoto"
+                        android:layout_width="68.0dip"
+                        android:layout_height="68.0dip"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/social_notlogin"/>
 
-</RelativeLayout>
+                    <ruifu.com.shares.widget.CircularImage
+                        android:id="@+id/cover_user_photo"
+                        android:layout_width="60.0dip"
+                        android:layout_height="60.0dip"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/cover_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/frame"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dip"
+                    android:textColor="@android:color/white"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ruifu.com.shares.widget.PullScrollView>

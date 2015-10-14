@@ -357,6 +357,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 
                             sp.edit().putString("userid", info.get("unionid").toString())
                                     .putString("headimgurl", info.get("headimgurl").toString())
+                                    .putString("username",info.get("nickname").toString())
                                     .putString("info", json.toString())
                                     .putString("third_author","weixin").commit();
                             thirdAuthorizationBiz = new ThirdAuthorizationBiz(LoginActivity.this);
@@ -454,6 +455,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 
                             sp.edit().putString("userid", openid).
                                     putString("headimgurl", info.get("profile_image_url").toString())
+                                    .putString("username",info.get("screen_name").toString())
                                     .putString("info", json.toString())
                                     .putString("third_author", "qq").commit();
                             thirdAuthorizationBiz = new ThirdAuthorizationBiz(LoginActivity.this);

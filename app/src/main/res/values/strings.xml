@@ -17,4 +17,5 @@
     <string name="login_net">网络请求超时，请稍后重试</string>
     <string name="title_activity_approve">ApproveActivity</string>
     <string name="title_activity_guide">GuideActivity</string>
+    <string name="default_cover_user_name">一键微信登陆 与好友分享投资心得</string>
 </resources>

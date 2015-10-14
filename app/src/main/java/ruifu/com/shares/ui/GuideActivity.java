@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ruifu.com.shares.R;
-import ruifu.com.shares.ui.adapter.ViewPagerAdapter;
+import ruifu.com.shares.adapter.ViewPagerAdapter;
 
 public class GuideActivity extends Activity implements OnPageChangeListener{
 
