@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout
+        android:id="@+id/stockBar"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:background="#1D2228">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:text="平安银行(000001)"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="96dp"
+            android:layout_marginRight="96dp"
+            android:id="@+id/stockNameTitle" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="已收盘 10-14 15:03:06"
+            android:id="@+id/tradeStatusTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/stockNameTitle"
+            android:layout_alignEnd="@+id/stockNameTitle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#666464" />
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#3C74B5"
+            android:text="返回"
+            android:gravity="center"
+            android:id="@+id/returnTextView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"/>
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#3C74B5"
+            android:text="刷新"
+            android:gravity="center"
+            android:id="@+id/refreshTextView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/stockBar" />
+</RelativeLayout>

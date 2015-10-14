@@ -1,4 +1,4 @@
-package ruifu.com.shares.data;
+package ruifu.com.shares.entity;
 
 /**
  * Created by qun on 15-10-13.
@@ -8,7 +8,7 @@ public class Stock {
     private String code;
     private int price;
     private int changeRate;
-    private boolean isDelist;
+    private boolean isDelisted;
 
     public Stock(String name, String code) {
         this.name = name;
@@ -23,8 +23,8 @@ public class Stock {
     public void setChangeRate(int changeRate) {
         this.changeRate = changeRate;
     }
-    public void setDelist(boolean isDelist) {
-        this.isDelist = isDelist;
+    public void setDelist(boolean isDelisted) {
+        this.isDelisted = isDelisted;
     }
     public String getName() {
         return name;
@@ -38,7 +38,7 @@ public class Stock {
     public int getChangeRate() {
         return changeRate;
     }
-    public boolean isDelist() {
-        return isDelist;
+    public boolean isDelisted() {
+        return isDelisted;
     }
 }

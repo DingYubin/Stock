@@ -47,6 +47,6 @@
         android:textColor="#E0E1E1"
         android:id="@+id/stockChangeRateView"
         android:gravity="center"
-        android:paddingLeft="32dp"
+        android:background="#FF0000"
         android:text="8.88%"/>
 </LinearLayout>

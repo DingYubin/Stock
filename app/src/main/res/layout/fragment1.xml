@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/stockBar"
         android:layout_width="fill_parent"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:gravity="center_vertical"
         android:background="#1D2228">
         <TextView
@@ -95,7 +95,6 @@
             android:textColor="#406FAA"
             android:text="涨跌幅"
             android:gravity="center"
-            android:paddingLeft="32dp"
             android:layout_weight="1"/>
     </LinearLayout>
 
