@@ -34,4 +34,12 @@
     <item name="system_settings_title" type="id">false</item>
     <item name="system_settings_more" type="id">false</item>
     <item name="settings_red_dot" type="id">false</item>
+    <item name="marker_us_icon" type="id">false</item>
+    <item name="marker_us" type="id">false</item>
+    <item name="marker_us_title" type="id">false</item>
+    <item name="marker_us_more" type="id">false</item>
+    <item name="market_pjhk_icon" type="id">false</item>
+    <item name="market_pjhk" type="id">false</item>
+    <item name="market_pjhk_title" type="id">false</item>
+    <item name="market_pjhk_more" type="id">false</item>
 </resources>

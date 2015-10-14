@@ -23,4 +23,6 @@
     <string name="personal_huodong_center_title">活动中心</string>
     <string name="personal_newscollect_title">资讯收藏</string>
     <string name="personal_setting_title">系统设置</string>
+    <string name="market_pjhkopen_account">港股开户</string>
+    <string name="marker_us_open_account">美股开户</string>
 </resources>
