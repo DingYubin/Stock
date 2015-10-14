@@ -18,4 +18,9 @@
     <string name="title_activity_approve">ApproveActivity</string>
     <string name="title_activity_guide">GuideActivity</string>
     <string name="default_cover_user_name">一键微信登陆 与好友分享投资心得</string>
+    <string name="personal_alert_title">提醒消息</string>
+    <string name="personal_assets_manage_title">资产管理</string>
+    <string name="personal_huodong_center_title">活动中心</string>
+    <string name="personal_newscollect_title">资讯收藏</string>
+    <string name="personal_setting_title">系统设置</string>
 </resources>
