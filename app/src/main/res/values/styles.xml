@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-	<style name="tab_item_text_style">
-        <item name="android:textSize">10.0dip</item>
-        <item name="android:textColor">#ffffffff</item>
-        <item name="android:ellipsize">marquee</item>       
-        <item name="android:singleLine">true</item>
-    </style>
-    
-    <style name="tab_item_background">
-    	<item name="android:textAppearance">@style/tab_item_text_style</item>   	
-        <item name="android:gravity">center_horizontal</item>  
-        <item name="android:background">@drawable/selector_tab_background2</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:button">@null</item>         
-        <item name="android:drawablePadding">3.0dip</item>
-        <item name="android:layout_weight">1.0</item>
-    </style>
-    
-    <style name="btn_style">
-    	<item name="android:layout_width">fill_parent</item>
-    	<item name="android:layout_height">wrap_content</item>
-    	<item name="android:background">@drawable/selector_btn</item>
-    	<item name="android:padding">10dp</item>
-    	
-    </style>
-    
     <style name="Animation">
-
-    	<item name="android:activityOpenEnterAnimation">@anim/translucent_enter</item>  
+    	<item name="android:activityOpenEnterAnimation">@anim/translucent_enter</item>
         <item name="android:activityOpenExitAnimation">@anim/translucent_exit</item>  
         <item name="android:activityCloseEnterAnimation">@anim/translucent_enter</item>  
-        <item name="android:activityCloseExitAnimation">@anim/translucent_exit</item>  
-        
-<!--        <item name="android:taskOpenEnterAnimation">@null</item>-->
-<!--        <item name="android:taskOpenExitAnimation">@null</item>-->
-<!--        <item name="android:taskCloseEnterAnimation">@null</item>-->
-<!--        <item name="android:taskCloseExitAnimation">@null</item>-->
-<!---->
-<!--        <item name="android:taskToFrontEnterAnimation">@null</item>-->
-<!--        <item name="android:taskToFrontExitAnimation">@null</item>-->
-<!--        <item name="android:taskToBackEnterAnimation">@null</item>-->
-<!--        <item name="android:taskToBackExitAnimation">@null</item>-->
+        <item name="android:activityCloseExitAnimation">@anim/translucent_exit</item>
     </style>
     
     <style name="AnimationTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowAnimationStyle">@style/Animation</item>
     </style>
-    
+
+    <style name="setting_cancel_label_style">
+        <item name="android:background">@drawable/navigationbar_button_gray_title_selecor</item>
+        <item name="android:layout_width">60.0dip</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:src">@drawable/common_return_back_arrow</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="setting_title_label_style">
+        <item name="android:textSize">19.0sp</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="setting_text_left_style" parent="@style/setting_text_style">
+        <item name="android:layout_marginLeft">20.0dip</item>
+    </style>
+
+    <style name="setting_text_style">
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">#ffdbdfe2</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="settings_items_enter_arrow_style">
+        <item name="android:layout_width">16.0dip</item>
+        <item name="android:layout_height">16.0dip</item>
+        <item name="android:layout_marginLeft">10.0dip</item>
+        <item name="android:layout_marginRight">10.0dip</item>
+    </style>
+
+    <style name="setting_text_right_style" parent="@style/setting_text_style">
+        <item name="android:textSize">15.0dip</item>
+        <item name="android:textColor">#ff5a6a81</item>
+        <item name="android:layout_marginRight">10.0dip</item>
+    </style>
+
 
 </resources>

@@ -6,4 +6,11 @@
     <color name="personal_item_unselect_bg">#ffffffff</color>
     <color name="personal_itemTitle_color">#ff000000</color>
     <color name="content">#ff101419</color>
+    <color name="trade_backgroundcolor">#ff101419</color>
+    <color name="common_top_title_bg_color">#ff1d2228</color>
+    <color name="common_selector_d_color">#ff15191e</color>
+    <color name="setting_backgroundcolor">#ff101419</color>
+    <color name="settings_items_selector_bg_d_color">#ff1f2228</color>
+    <color name="settings_items_selector_bg_color">#ff272b32</color>
+    <color name="settings_items_title_color">#ff3d75b7</color>
 </resources>

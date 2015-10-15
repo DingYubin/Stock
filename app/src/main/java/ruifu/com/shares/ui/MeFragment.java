@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ import ruifu.com.shares.widget.CircularImage;
  * Created by dyb on 15/9/27.
  */
 public class MeFragment extends BaseFragment implements OnClickListener {
+    private final static String TAG = "MeFragment";
 
     public static BaseFragment newInstance(int index) {
         BaseFragment fragment = new MeFragment();
@@ -35,6 +37,7 @@ public class MeFragment extends BaseFragment implements OnClickListener {
     }
     
     private View layoutView;
+    private RelativeLayout system_settings;
     private TextView cover_user_name;
     CircularImage cover_user_photo;
 
@@ -46,20 +49,27 @@ public class MeFragment extends BaseFragment implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sp = getActivity().getSharedPreferences("users", Activity.MODE_PRIVATE);
-        Log.i("MeFragment","onCreate");
+//        Log.i("MeFragment","onCreate");
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("MeFragment","onCreateView");
+//        Log.i("MeFragment","onCreateView");
         layoutView = inflater.inflate(R.layout.fragment_me,container,false);
         scrollView =  (ScrollView) layoutView.findViewById(R.id.scroll_view);
 
+        cover_user_name = (TextView) layoutView.findViewById(R.id.cover_user_name);
         cover_user_photo = (CircularImage) layoutView.findViewById(R.id.cover_user_photo);
+
+
+        system_settings = (RelativeLayout) layoutView.findViewById(R.id.system_settings);
+
+        system_settings.setOnClickListener(this);
         cover_user_photo.setOnClickListener(this);
 
-        cover_user_name = (TextView) layoutView.findViewById(R.id.cover_user_name);
+
+
         return layoutView;
     }
 
@@ -78,10 +88,10 @@ public class MeFragment extends BaseFragment implements OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        Log.i("MeFragment", "onStart");
+//        Log.i("MeFragment", "onStart");
         String headimgurl = sp.getString("headimgurl", "");
         String name = sp.getString("username","");
-        Log.i("MeFragment","headimgurl : " + headimgurl);
+//        Log.i("MeFragment","headimgurl : " + headimgurl);
         if (headimgurl.equals("") && headimgurl.equals("")) {
             //如果获取的url为空，则默认头像
 //            cover_user_photo.setImageResource(R.drawable.common_personal_defaultlogo);
@@ -106,6 +116,11 @@ public class MeFragment extends BaseFragment implements OnClickListener {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
+                break;
+            case R.id.system_settings:
+                    Log.i(TAG,"系统设置");
+                     Intent intent = new Intent(getActivity(), SettingsMainActivity.class);
+                     startActivity(intent);
                 break;
             default:
                 break;

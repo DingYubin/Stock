@@ -25,4 +25,20 @@
     <string name="personal_setting_title">系统设置</string>
     <string name="market_pjhkopen_account">港股开户</string>
     <string name="marker_us_open_account">美股开户</string>
+    <string name="common_desc">content destribution</string>
+    <string name="settings_title_str">设置</string>
+    <string name="setting_login_title">账号管理</string>
+    <string name="setting_items_hq_set_str">行情設置</string>
+    <string name="setting_hangqing_refresh_label">行情刷新頻率</string>
+    <string name="setting_hangqing_refresh_content1">不刷新</string>
+    <string name="setting_hs_k_line_fuquan_set">K線設置</string>
+    <string name="setting_hangqing_showcolor_label">漲跌顯示設置</string>
+    <string name="setting_hangqing_showcolor_content1">紅漲綠跌</string>
+    <string name="setting_items_news_set_str">資訊設置</string>
+    <string name="setting_items_system_set_str">系統設置</string>
+    <string name="app_version">4.3.1</string>
+    <string name="setting_version">版本</string>
+    <string name="setting_feedback_string">意見反饋</string>
+    <string name="setting_recommend_string">版本推薦</string>
+    <string name="setting_clear_cache_string">清除緩存</string>
 </resources>

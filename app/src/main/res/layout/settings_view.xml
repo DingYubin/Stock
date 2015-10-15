@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@id/setting_view"
+             android:scrollbars="none"
+             android:fadingEdge="none"
+             android:background="@color/setting_backgroundcolor"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent">
+
+    <LinearLayout android:orientation="vertical"
+                  android:paddingBottom="54.0dip"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <ImageView
+            android:background="@drawable/settings_items_boundary_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:layout_marginTop="20.0dip"
+            android:contentDescription="@null" />
+
+        <RelativeLayout
+            android:id="@id/setting_login"
+            android:background="@drawable/settings_shape_corner_updown_selector"
+            android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/setting_blockitem_height">
+
+            <TextView
+                android:id="@id/account_setting_text_label"
+                android:layout_width="fill_parent"
+                android:text="@string/setting_login_title"
+                style="@style/setting_text_left_style" />
+
+            <ImageView
+                android:id="@id/account_seting_image"
+                android:paddingRight="5.0dip"
+                android:src="@drawable/settings_enter"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                style="@style/settings_items_enter_arrow_style" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:background="@drawable/settings_items_boundary_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:contentDescription="@null" />
+
+        <TextView android:textSize="16.0sp"
+                  android:textColor="@color/settings_items_title_color"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="20.0dip"
+                  android:layout_marginTop="25.0dip"
+                  android:layout_marginBottom="10.0dip"
+                  android:text="@string/setting_items_hq_set_str" />
+
+        <LinearLayout android:orientation="vertical"
+                      android:background="@color/settings_items_selector_bg_color"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@drawable/settings_items_boundary_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:id="@id/setting_hangqing_refresh"
+                android:background="@drawable/settings_shape_corner_updown_selector"
+                android:clickable="true"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/setting_blockitem_height">
+
+                <TextView android:text="@string/setting_hangqing_refresh_label"
+                          style="@style/setting_text_left_style" />
+
+                <ImageView android:id="@id/enter_image1"
+                           android:paddingRight="5.0dip"
+                           android:src="@drawable/settings_enter"
+                           android:layout_alignParentRight="true"
+                           android:layout_centerVertical="true"
+                           android:contentDescription="@null"
+                           style="@style/settings_items_enter_arrow_style" />
+
+                <TextView android:id="@id/setting_hangqing_refresh_content"
+                          android:text="@string/setting_hangqing_refresh_content1"
+                          android:layout_toLeftOf="@id/enter_image1"
+                          style="@style/setting_text_right_style" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@id/portfolio_refresh_switch_sep"
+                android:background="@drawable/settings_items_divider_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:id="@id/setting_hs_K_line_set"
+                android:background="@drawable/settings_shape_corner_updown_selector"
+                android:clickable="true"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/setting_blockitem_height">
+
+                <TextView android:id="@id/setting_hs_K_line_set_textview"
+                          android:text="@string/setting_hs_k_line_fuquan_set"
+                          style="@style/setting_text_left_style" />
+
+                <TextView android:id="@id/setting_hs_K_line_set_content"
+                          android:layout_toLeftOf="@id/setting_hs_K_line_set_enter_image"
+                          style="@style/setting_text_right_style" />
+
+                <ImageView
+                    android:id="@id/setting_hs_K_line_set_enter_image"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/settings_enter"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    style="@style/settings_items_enter_arrow_style" />
+            </RelativeLayout>
+
+            <ImageView
+                android:background="@drawable/settings_items_divider_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:id="@id/setting_hangqing_showcolor"
+                android:background="@drawable/settings_shape_corner_updown_selector"
+                android:clickable="true"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/setting_blockitem_height">
+
+                <TextView
+                    android:text="@string/setting_hangqing_showcolor_label"
+                    style="@style/setting_text_left_style" />
+
+                <ImageView
+                    android:id="@id/enter_image2"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/settings_enter"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    style="@style/settings_items_enter_arrow_style" />
+
+                <TextView
+                    android:id="@id/setting_hangqing_showcolor_content"
+                    android:text="@string/setting_hangqing_showcolor_content1"
+                    android:layout_toLeftOf="@id/enter_image2"
+                    style="@style/setting_text_right_style" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:background="@drawable/settings_items_boundary_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+        <TextView android:textSize="16.0sp"
+                  android:textColor="@color/settings_items_title_color"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="20.0dip"
+                  android:layout_marginTop="25.0dip"
+                  android:layout_marginBottom="10.0dip"
+                  android:text="@string/setting_items_system_set_str" />
+
+        <LinearLayout
+                  android:orientation="vertical"
+                  android:background="@color/settings_items_selector_bg_color"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@drawable/settings_items_boundary_line"
+                android:layout_width="fill_parent" android:layout_height="1.0dip"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:id="@id/setting_clear_cache"
+                android:background="@drawable/settings_shape_corner_updown_selector"
+                android:clickable="false"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/setting_blockitem_height">
+
+                <TextView
+                    android:id="@id/setting_clear_cache_textview"
+                    android:text="@string/setting_clear_cache_string"
+                    style="@style/setting_text_left_style" />
+
+                <TextView
+                    android:id="@id/setting_clear_cache_content"
+                    android:layout_toLeftOf="@id/enter_image_cache"
+                    style="@style/setting_text_right_style" />
+
+                <ImageView
+                    android:id="@id/enter_image_cache"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/settings_enter"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    style="@style/settings_items_enter_arrow_style" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:background="@drawable/settings_items_divider_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:id="@id/setting_feedback"
+                android:background="@drawable/settings_shape_corner_updown_selector"
+                android:clickable="false" android:layout_width="fill_parent"
+                android:layout_height="@dimen/setting_blockitem_height">
+
+                <TextView
+                    android:id="@id/setting_feedback_textview"
+                    android:text="@string/setting_feedback_string"
+                    style="@style/setting_text_left_style" />
+
+                <ImageView
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/settings_enter"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    style="@style/settings_items_enter_arrow_style" />
+
+            </RelativeLayout>
+            <ImageView
+                android:background="@drawable/settings_items_divider_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:id="@id/setting_recommend"
+                android:background="@drawable/settings_shape_corner_updown_selector"
+                android:clickable="false"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/setting_blockitem_height">
+
+                <TextView
+                    android:id="@id/setting_recommend_textview"
+                    android:text="@string/setting_recommend_string"
+                    style="@style/setting_text_left_style" />
+
+                <ImageView
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/settings_enter"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    style="@style/settings_items_enter_arrow_style" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:background="@drawable/settings_items_divider_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:id="@id/setting_about"
+                android:background="@drawable/settings_shape_corner_updown_selector"
+                android:clickable="true"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/setting_blockitem_height">
+
+                <TextView
+                    android:id="@id/setting_version_update_text"
+                    android:text="@string/setting_version"
+                    style="@style/setting_text_left_style" />
+
+                <ImageView
+                    android:id="@id/enter_image3"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/settings_enter"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@null"
+                    style="@style/settings_items_enter_arrow_style" />
+
+                <TextView
+                    android:text="@string/app_version"
+                    android:layout_toLeftOf="@id/enter_image3"
+                    style="@style/setting_text_right_style" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:background="@drawable/settings_items_boundary_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:contentDescription="@null" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

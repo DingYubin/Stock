@@ -42,4 +42,37 @@
     <item name="market_pjhk" type="id">false</item>
     <item name="market_pjhk_title" type="id">false</item>
     <item name="market_pjhk_more" type="id">false</item>
+    <item name="Trade_Entry_NaviBtn_Back" type="id">false</item>
+    <item name="Trade_Entry_Navigation_Title" type="id">false</item>
+    <item name="settings_close_button" type="id">false</item>
+    <item name="navigationbar_title_setting" type="id">false</item>
+    <item name="setting_view" type="id">false</item>
+    <item name="setting_login" type="id">false</item>
+    <item name="account_setting_text_label" type="id">false</item>
+    <item name="account_seting_image" type="id">false</item>
+    <item name="setting_hangqing_refresh" type="id">false</item>
+    <item name="enter_image1" type="id">false</item>
+    <item name="setting_hangqing_refresh_content" type="id">false</item>
+    <item name="setting_hangqing_refresh_new_image" type="id">false</item>
+    <item name="portfolio_refresh_switch_sep" type="id">false</item>
+    <item name="setting_hs_K_line_set" type="id">false</item>
+    <item name="setting_hs_K_line_set_textview" type="id">false</item>
+    <item name="setting_hs_K_line_set_update_image" type="id">false</item>
+    <item name="setting_hs_K_line_set_content" type="id">false</item>
+    <item name="setting_hs_K_line_set_enter_image" type="id">false</item>
+    <item name="setting_hangqing_showcolor" type="id">false</item>
+    <item name="enter_image2" type="id">false</item>
+    <item name="setting_hangqing_showcolor_content" type="id">false</item>
+    <item name="setting_about" type="id">false</item>
+    <item name="setting_version_update_text" type="id">false</item>
+    <item name="setting_version_update_new_image" type="id">false</item>
+    <item name="enter_image3" type="id">false</item>
+    <item name="setting_recommend" type="id">false</item>
+    <item name="setting_recommend_textview" type="id">false</item>
+    <item name="setting_feedback" type="id">false</item>
+    <item name="setting_feedback_textview" type="id">false</item>
+    <item name="enter_image_cache" type="id">false</item>
+    <item name="setting_clear_cache_content" type="id">false</item>
+    <item name="setting_clear_cache_textview" type="id">false</item>
+    <item name="setting_clear_cache" type="id">false</item>
 </resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:background="@color/common_top_title_bg_color"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip">
+
+        <ImageView
+            android:id="@id/settings_close_button"
+            android:contentDescription="@null"
+            style="@style/setting_cancel_label_style" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@id/navigationbar_title_setting"
+            android:text="@string/settings_title_str"
+            style="@style/setting_title_label_style" />
+
+    </RelativeLayout>
+    <include layout="@layout/settings_view" />
+</LinearLayout>
