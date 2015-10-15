@@ -23,10 +23,10 @@ import ruifu.com.shares.widget.CircularImage;
 /**
  * Created by dyb on 15/9/27.
  */
-public class Fragment4 extends BaseFragment implements OnClickListener {
+public class MeFragment extends BaseFragment implements OnClickListener {
 
     public static BaseFragment newInstance(int index) {
-        BaseFragment fragment = new Fragment4();
+        BaseFragment fragment = new MeFragment();
         Bundle args = new Bundle();
         args.putInt("index", index);
         fragment.setArguments(args);
@@ -46,14 +46,14 @@ public class Fragment4 extends BaseFragment implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sp = getActivity().getSharedPreferences("users", Activity.MODE_PRIVATE);
-        Log.i("Fragment4","onCreate");
+        Log.i("MeFragment","onCreate");
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("Fragment4","onCreateView");
-        layoutView = inflater.inflate(R.layout.fragment4,null);
+        Log.i("MeFragment","onCreateView");
+        layoutView = inflater.inflate(R.layout.fragment_me,container,false);
         scrollView =  (ScrollView) layoutView.findViewById(R.id.scroll_view);
 
         cover_user_photo = (CircularImage) layoutView.findViewById(R.id.cover_user_photo);
@@ -66,7 +66,7 @@ public class Fragment4 extends BaseFragment implements OnClickListener {
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("Fragment4", "onPause");
+        Log.i("MeFragment", "onPause");
 
     }
 
@@ -78,10 +78,10 @@ public class Fragment4 extends BaseFragment implements OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        Log.i("Fragment4", "onStart");
+        Log.i("MeFragment", "onStart");
         String headimgurl = sp.getString("headimgurl", "");
         String name = sp.getString("username","");
-        Log.i("Fragment4","headimgurl : " + headimgurl);
+        Log.i("MeFragment","headimgurl : " + headimgurl);
         if (headimgurl.equals("") && headimgurl.equals("")) {
             //如果获取的url为空，则默认头像
 //            cover_user_photo.setImageResource(R.drawable.common_personal_defaultlogo);

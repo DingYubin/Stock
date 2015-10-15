@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity">
+            android:name=".ui.FragmentMainActivity">
         </activity>
         <activity
             android:name=".ui.GuideActivity">

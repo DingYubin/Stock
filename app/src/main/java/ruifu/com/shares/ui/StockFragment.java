@@ -11,8 +11,6 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import ruifu.com.shares.BaseFragment;
 import ruifu.com.shares.R;
@@ -85,7 +83,7 @@ public class StockFragment extends BaseFragment {
     public void onPause() {
         super.onPause();
         Log.i("StockFragment", "onPause");
-        getActivity().findViewById(R.id.main_radiogroup).setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.ly_main_tab_bottom).setVisibility(View.VISIBLE);
 
     }
 

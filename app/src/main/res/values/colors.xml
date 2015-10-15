@@ -5,4 +5,5 @@
     <color name="personal_item_selected_bg">#ffd0d6dd</color>
     <color name="personal_item_unselect_bg">#ffffffff</color>
     <color name="personal_itemTitle_color">#ff000000</color>
+    <color name="content">#ff101419</color>
 </resources>

@@ -534,12 +534,5 @@
                 android:layout_alignParentBottom="true"
                 android:contentDescription="@null" />
         </RelativeLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@id/space_ahead_alert_area"
-            android:background="@null"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/personal_item1_height" />
-
     </LinearLayout>
 </ruifu.com.shares.widget.PullScrollView>

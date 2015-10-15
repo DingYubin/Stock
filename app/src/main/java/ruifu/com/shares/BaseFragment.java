@@ -1,7 +1,7 @@
 package ruifu.com.shares;
 
 
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 
 /**
  * Created by dyb on 15/9/27.

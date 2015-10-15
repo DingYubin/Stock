@@ -1,10 +1,8 @@
 package ruifu.com.shares.ui;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,16 +12,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import ruifu.com.shares.BaseFragment;
 import ruifu.com.shares.R;
 import ruifu.com.shares.adapter.PortfolioAdapter;
 import ruifu.com.shares.entity.Stock;
 
-public class Fragment1 extends BaseFragment implements View.OnClickListener {
+public class PortfolioFragment extends BaseFragment implements View.OnClickListener {
     public static BaseFragment newInstance(int index) {
-        BaseFragment fragment = new Fragment3();
+        BaseFragment fragment = new NewsFragment();
         Bundle args = new Bundle();
         args.putInt("index", index);
         fragment.setArguments(args);
@@ -32,26 +29,26 @@ public class Fragment1 extends BaseFragment implements View.OnClickListener {
     }
 
     private View layoutView;
-    private FragmentTabHost mTabHost;
     private RecyclerView portfolioRecyclerView;
     private RecyclerView.LayoutManager portfolioLayoutManager;
     private PortfolioAdapter portfolioAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.i("Fragment1", "onCreate");
+        Log.i("PortfolioFragment", "onCreate");
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("Fragment1", "onCreateView");
-        layoutView = inflater.inflate(R.layout.fragment1,null);
+        Log.i("PortfolioFragment", "onCreateView");
+        layoutView = inflater.inflate(R.layout.fragment_portfolio,container,false);
+
         portfolioRecyclerView = (RecyclerView)layoutView.findViewById(R.id.stockListView);
         portfolioRecyclerView.setHasFixedSize(true);
-        portfolioLayoutManager = new LinearLayoutManager(getContext());
+        portfolioLayoutManager = new LinearLayoutManager(getActivity());
         portfolioRecyclerView.setLayoutManager(portfolioLayoutManager);
-        portfolioAdapter = new PortfolioAdapter(this, getContext());
+        portfolioAdapter = new PortfolioAdapter(this,getActivity());
         Stock[] stocks = new Stock[4];
         stocks[0] = new Stock("平安银行", "000001");
         stocks[0].setPrice(1235);
@@ -74,28 +71,28 @@ public class Fragment1 extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onPause() {
-        Log.i("Fragment1", "onPause");
+        Log.i("PortfolioFragment", "onPause");
         super.onPause();
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        Log.d("Fragment1", "create context for item: " + v.getId());
+        Log.d("PortfolioFragment", "create context for item: " + v.getId());
         menu.add(Menu.NONE, 1, v.getId(), "删除");
         menu.add(Menu.NONE, 2, v.getId(), "置顶");
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        Log.d("Fragment1", "onContextItemSelected, id: " + item.getItemId());
+        Log.d("PortfolioFragment", "onContextItemSelected, id: " + item.getItemId());
         switch (item.getItemId()) {
             case 1:
-                Log.d("Fragment1", "delete operation");
+                Log.d("PortfolioFragment", "delete operation");
                 //Toast.makeText(this.getActivity(), "删除操作选中", Toast.LENGTH_LONG).show();
                 portfolioAdapter.removeStock(item.getOrder());
                 break;
             case 2:
-                Log.d("Fragment1", "top operation");
+                Log.d("PortfolioFragment", "top operation");
                 //Toast.makeText(this.getActivity(), "置顶操作选中", Toast.LENGTH_LONG).show();
                 portfolioAdapter.moveStock(item.getOrder(), 0);
                 break;
@@ -107,12 +104,12 @@ public class Fragment1 extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Log.d("Fragment1", "onClick event, position: " + v.getId());
+        Log.d("PortfolioFragment", "onClick event, position: " + v.getId());
         BaseFragment stockFragment = StockFragment.newInstance(getIndex(), portfolioAdapter.getStock(v.getId()));
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getActivity().getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(this.getId(), stockFragment);
-        getActivity().findViewById(R.id.main_radiogroup).setVisibility(View.INVISIBLE);
+        getActivity().findViewById(R.id.ly_main_tab_bottom).setVisibility(View.GONE);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

@@ -61,7 +61,7 @@ public class SplashActivity extends Activity{
     }
 
     private void goHome(){
-        Intent i = new Intent(SplashActivity.this,MainActivity.class);
+        Intent i = new Intent(SplashActivity.this,FragmentMainActivity.class);
         startActivity(i);
         finish();
     }
