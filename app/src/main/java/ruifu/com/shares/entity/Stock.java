@@ -7,21 +7,21 @@ public class Stock {
     private String name;
     private String code;
     private int price;
-    private int changeRate;
+    private int change;
     private boolean isDelisted;
 
     public Stock(String name, String code) {
         this.name = name;
         this.code = code;
         setPrice(0);
-        setChangeRate(0);
+        setChange(0);
         setDelist(false);
     }
     public void setPrice(int price) {
         this.price = price;
     }
-    public void setChangeRate(int changeRate) {
-        this.changeRate = changeRate;
+    public void setChange(int change) {
+        this.change = change;
     }
     public void setDelist(boolean isDelisted) {
         this.isDelisted = isDelisted;
@@ -35,8 +35,9 @@ public class Stock {
     public int getPrice() {
         return price;
     }
-    public int getChangeRate() {
-        return changeRate;
+    public int getChange() { return change; }
+    public double getChangeRate() {
+        return change * 1.0 / price;
     }
     public boolean isDelisted() {
         return isDelisted;

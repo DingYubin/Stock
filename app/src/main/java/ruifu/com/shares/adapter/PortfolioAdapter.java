@@ -84,12 +84,12 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.View
             holder.stockChangeRateView.setText("停牌");
             holder.stockChangeRateView.setBackground(new ColorDrawable(Color.GRAY));
         } else {
-            int changeRate = stock.getChangeRate();
+            double changeRate = stock.getChangeRate();
             if (changeRate > 0) {
-                holder.stockChangeRateView.setText(String.format("+%.02f%%", changeRate / 100.0));
+                holder.stockChangeRateView.setText(String.format("+%.02f%%", changeRate));
                 holder.stockChangeRateView.setBackground(RED_COLOR);
             } else if (changeRate < 0) {
-                holder.stockChangeRateView.setText(String.format("-%.02f%%", changeRate / 100.0));
+                holder.stockChangeRateView.setText(String.format("-%.02f%%", changeRate));
                 holder.stockChangeRateView.setBackground(GREEN_COLOR);
             } else {
                 holder.stockChangeRateView.setText("0.00%");

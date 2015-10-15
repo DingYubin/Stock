@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -13,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:id="@+id/currentPrice"
             android:text="12.95"
             android:gravity="center"
             android:textSize="48dp"
@@ -26,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:id="@+id/currentChange"
                 android:text="-0.05"
                 android:textSize="24dp"
                 android:textStyle="bold"
@@ -35,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:id="@+id/currentChangeRate"
                 android:text="-0.05%"
                 android:gravity="center"
                 android:textStyle="bold"

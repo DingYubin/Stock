@@ -55,16 +55,16 @@ public class Fragment1 extends BaseFragment implements View.OnClickListener {
         Stock[] stocks = new Stock[4];
         stocks[0] = new Stock("平安银行", "000001");
         stocks[0].setPrice(1235);
-        stocks[0].setChangeRate(825);
+        stocks[0].setChange(25);
         stocks[1] = new Stock("招商银行", "600036");
         stocks[1].setPrice(1806);
-        stocks[1].setChangeRate(-71);
+        stocks[1].setChange(-71);
         stocks[2] = new Stock("五粮液", "000858");
         stocks[2].setPrice(2573);
         stocks[2].setDelist(true);
         stocks[3] = new Stock("中信银行", "601998");
-        stocks[3].setPrice(618);
-        stocks[3].setChangeRate(0);
+        stocks[3].setPrice(318);
+        stocks[3].setChange(0);
         for (int i = 0; i < 4; i++) {
             portfolioAdapter.addStock(stocks[i % 4]);
         }
@@ -91,12 +91,12 @@ public class Fragment1 extends BaseFragment implements View.OnClickListener {
         switch (item.getItemId()) {
             case 1:
                 Log.d("Fragment1", "delete operation");
-                Toast.makeText(this.getActivity(), "删除操作选中", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this.getActivity(), "删除操作选中", Toast.LENGTH_LONG).show();
                 portfolioAdapter.removeStock(item.getOrder());
                 break;
             case 2:
                 Log.d("Fragment1", "top operation");
-                Toast.makeText(this.getActivity(), "置顶操作选中", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this.getActivity(), "置顶操作选中", Toast.LENGTH_LONG).show();
                 portfolioAdapter.moveStock(item.getOrder(), 0);
                 break;
             default:
@@ -112,6 +112,7 @@ public class Fragment1 extends BaseFragment implements View.OnClickListener {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(this.getId(), stockFragment);
+        getActivity().findViewById(R.id.main_radiogroup).setVisibility(View.INVISIBLE);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

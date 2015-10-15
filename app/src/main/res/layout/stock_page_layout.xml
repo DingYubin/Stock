@@ -51,9 +51,24 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
-
-    <android.support.v4.view.ViewPager
-        android:layout_height="match_parent"
+    <include layout="@layout/price_info_layout"
         android:layout_width="match_parent"
-        android:layout_below="@+id/stockBar" />
+        android:layout_height="96dp"
+        android:layout_below="@+id/stockBar"
+        android:id="@+id/priceInfoLayout"/>
+    <include layout="@layout/stock_basic_info"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_below="@+id/priceInfoLayout"
+        android:id="@+id/stockBasicInfoLayout"/>
+    <include layout="@layout/stock_trend_line"
+        android:layout_width="match_parent"
+        android:layout_height="236dp"
+        android:layout_below="@+id/stockBasicInfoLayout"
+        android:id="@+id/stockTrendLine"/>
+    <include layout="@layout/stock_extra_info"
+        android:layout_width="match_parent"
+        android:layout_height="236dp"
+        android:layout_below="@+id/stockTrendLine"
+        android:id="@+id/stockExtraInfo"/>
 </RelativeLayout>
