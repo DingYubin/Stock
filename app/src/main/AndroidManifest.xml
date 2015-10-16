@@ -43,6 +43,15 @@
             android:name=".ui.SettingsMainActivity">
         </activity>
         <activity
+            android:name=".ui.InforCollectionActivity">
+        </activity>
+        <activity
+            android:name=".ui.HKAccountActivity">
+        </activity>
+        <activity
+            android:name=".ui.USAAccountActivity">
+        </activity>
+        <activity
             android:name=".ui.LoginActivity"
             android:configChanges="orientation|keyboard"
             android:label="@string/title_activity_login" >

@@ -39,6 +39,10 @@
     <string name="app_version">4.3.1</string>
     <string name="setting_version">版本</string>
     <string name="setting_feedback_string">意見反饋</string>
-    <string name="setting_recommend_string">版本推薦</string>
+    <string name="setting_recommend_string">应用推薦</string>
     <string name="setting_clear_cache_string">清除緩存</string>
+    <string name="portfolio_refreshbtn_statistics_switch">自选列表刷新按钮显示</string>
+    <string name="exit_Process">再按一次退出程序</string>
+    <string name="information_collection">资讯收藏</string>
+
 </resources>

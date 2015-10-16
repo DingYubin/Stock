@@ -37,7 +37,13 @@ public class MeFragment extends BaseFragment implements OnClickListener {
     }
     
     private View layoutView;
+
+    private RelativeLayout hk_account;
+    private RelativeLayout us_account;
     private RelativeLayout system_settings;
+    private RelativeLayout favorate_info;
+
+
     private TextView cover_user_name;
     CircularImage cover_user_photo;
 
@@ -62,9 +68,14 @@ public class MeFragment extends BaseFragment implements OnClickListener {
         cover_user_name = (TextView) layoutView.findViewById(R.id.cover_user_name);
         cover_user_photo = (CircularImage) layoutView.findViewById(R.id.cover_user_photo);
 
-
+        hk_account = (RelativeLayout) layoutView.findViewById(R.id.market_pjhk);
+        us_account = (RelativeLayout) layoutView.findViewById(R.id.marker_us);
+        favorate_info = (RelativeLayout) layoutView.findViewById(R.id.favorate_info_layout);
         system_settings = (RelativeLayout) layoutView.findViewById(R.id.system_settings);
 
+        hk_account.setOnClickListener(this);
+        us_account.setOnClickListener(this);
+        favorate_info.setOnClickListener(this);
         system_settings.setOnClickListener(this);
         cover_user_photo.setOnClickListener(this);
 
@@ -117,10 +128,22 @@ public class MeFragment extends BaseFragment implements OnClickListener {
                     startActivity(intent);
                 }
                 break;
+            case R.id.market_pjhk:
+                Intent hkIntent = new Intent(getActivity(), HKAccountActivity.class);
+                startActivity(hkIntent);
+                break;
+            case R.id.marker_us:
+                Intent usIntent = new Intent(getActivity(), USAAccountActivity.class);
+                startActivity(usIntent);
+                break;
+            case R.id.favorate_info_layout:
+                Intent infoIntent = new Intent(getActivity(), InforCollectionActivity.class);
+                startActivity(infoIntent);
+                break;
             case R.id.system_settings:
                     Log.i(TAG,"系统设置");
-                     Intent intent = new Intent(getActivity(), SettingsMainActivity.class);
-                     startActivity(intent);
+                     Intent systemIntent = new Intent(getActivity(), SettingsMainActivity.class);
+                     startActivity(systemIntent);
                 break;
             default:
                 break;
