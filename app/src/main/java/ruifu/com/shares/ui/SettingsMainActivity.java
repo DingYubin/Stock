@@ -1,5 +1,6 @@
 package ruifu.com.shares.ui;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -38,12 +39,15 @@ public class SettingsMainActivity extends BaseActivity implements OnClickListene
             .getUMSocialService(Constants.DESCRIPTOR);
 
     private ImageView btRet;
+
+    private RelativeLayout acc_manger;
     private RelativeLayout setting_recommend;
     private RelativeLayout setting_about;
 
     public void setUpView() {
         btRet = (ImageView) findViewById(R.id.settings_close_button);
 
+        acc_manger = (RelativeLayout) findViewById(R.id.setting_login);
         setting_recommend = (RelativeLayout) findViewById(R.id.setting_recommend);
         setting_about = (RelativeLayout) findViewById(R.id.setting_about);
     }
@@ -51,6 +55,7 @@ public class SettingsMainActivity extends BaseActivity implements OnClickListene
     @Override
     public void addListener() {
         btRet.setOnClickListener(this);
+        acc_manger.setOnClickListener(this);
         setting_recommend.setOnClickListener(this);
         setting_about.setOnClickListener(this);
     }
@@ -65,8 +70,6 @@ public class SettingsMainActivity extends BaseActivity implements OnClickListene
         setContentView(R.layout.settings_main_activity);
         super.onCreate(savedInstanceState);
 
-//        //配置需要分享的平台
-//        addCustomPlatforms();
         //设置分享内容
         setShareContent();
 
@@ -79,11 +82,16 @@ public class SettingsMainActivity extends BaseActivity implements OnClickListene
             case R.id.settings_close_button:
                 goBackFinish();
                 break;
+            case R.id.setting_login:
+                Intent login_intent = new Intent(this,AccManagerActivity.class);
+                startActivity(login_intent);
+                break;
             case R.id.setting_recommend:
                 addCustomPlatforms();
                 break;
             case R.id.setting_about:
-
+                Intent about_intent = new Intent(this,SettingAboutActivity.class);
+                startActivity(about_intent);
                 break;
             default:
                 break;
