@@ -5,20 +5,27 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import java.util.List;
+
+import ruifu.com.shares.BaseActivity;
+import ruifu.com.shares.MyApplication;
 import ruifu.com.shares.R;
 
-public class FragmentMainActivity extends Activity implements OnClickListener
+public class FragmentMainActivity extends BaseActivity implements OnClickListener
 {
     private PortfolioFragment mTab01;
     private NewsFragment mTab02;
     private MarketsFragment mTab03;
     private MeFragment mTab04;
 
+    private long exitTime = 0;
     /**
      * 底部四个按钮
      */
@@ -31,32 +38,36 @@ public class FragmentMainActivity extends Activity implements OnClickListener
      */
     private FragmentManager fragmentManager;
 
-    @SuppressLint("NewApi")
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initViews();
-        fragmentManager = getFragmentManager();
-        setTabSelection(0);
-    }
-
-
-
-    private void initViews()
-    {
-
+    public void setUpView() {
         mTabBtnPortfolio = (LinearLayout) findViewById(R.id.id_tab_bottom_portfolio);
         mTabBtnNews = (LinearLayout) findViewById(R.id.id_tab_bottom_news);
         mTabBtnMarkets = (LinearLayout) findViewById(R.id.id_tab_bottom_markets);
         mTabBtnMe = (LinearLayout) findViewById(R.id.id_tab_bottom_me);
 
+        fragmentManager = getFragmentManager();
+        setTabSelection(0);
+    }
+
+    @Override
+    public void addListener() {
         mTabBtnPortfolio.setOnClickListener(this);
         mTabBtnNews.setOnClickListener(this);
         mTabBtnMarkets.setOnClickListener(this);
         mTabBtnMe.setOnClickListener(this);
     }
+
+    @Override
+    public void fillData() {
+
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+
+    }
+
 
     @Override
     public void onClick(View v)
@@ -203,4 +214,34 @@ public class FragmentMainActivity extends Activity implements OnClickListener
 
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO 拦截后退按钮
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitApp();
+            return true;
+        }
+        return false;
+    }
+
+    private void exitApp() {
+        // TODO 退出
+        if ((System.currentTimeMillis() - exitTime)>2000) {
+            Toast.makeText(this, R.string.exit_Process, Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        }else {
+            finishApp();
+        }
+    }
+
+    private void finishApp() {
+        // TODO 结束程序的代码
+        MyApplication app = (MyApplication) getApplication();
+        List<Activity> list = app.getActivityList();
+        for (Activity activity : list) {
+            activity.finish();
+        }
+        app = null;
+        android.os.Process.killProcess(getTaskId());
+    }
 }

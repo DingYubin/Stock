@@ -2,6 +2,7 @@
 <LinearLayout android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:background="@color/setting_backgroundcolor"
               xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
@@ -10,14 +11,14 @@
         android:layout_height="45.0dip">
 
         <ImageView
-            android:id="@id/approve_close_button"
+            android:id="@id/hk_close_button"
             android:contentDescription="@null"
             style="@style/setting_cancel_label_style" />
 
         <TextView
             android:gravity="center"
-            android:id="@id/approve_title_setting"
+            android:id="@id/hk_title_setting"
+            android:text="@string/market_pjhkopen_account"
             style="@style/setting_title_label_style" />
-
     </RelativeLayout>
 </LinearLayout>

@@ -75,4 +75,15 @@
     <item name="setting_clear_cache_content" type="id">false</item>
     <item name="setting_clear_cache_textview" type="id">false</item>
     <item name="setting_clear_cache" type="id">false</item>
+    <item name="portfolio_refresh_switch_layout" type="id">false</item>
+    <item name="portfolio_refresh_switch_textview" type="id">false</item>
+    <item name="portfolio_refresh_switch_image" type="id">false</item>
+    <item name="approve_close_button" type="id">false</item>
+    <item name="approve_title_setting" type="id">false</item>
+    <item name="information_title_setting" type="id">false</item>
+    <item name="information_close_button" type="id">false</item>
+    <item name="hk_close_button" type="id">false</item>
+    <item name="hk_title_setting" type="id">false</item>
+    <item name="us_close_button" type="id">false</item>
+    <item name="us_title_setting" type="id">false</item>
 </resources>
