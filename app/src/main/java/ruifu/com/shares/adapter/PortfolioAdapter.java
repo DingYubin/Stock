@@ -71,7 +71,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.View
     }
     @Override
     public PortfolioAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(layoutInflater.inflate(R.layout.stock_line_layout, parent, false), fragment);
+        return new ViewHolder(layoutInflater.inflate(R.layout.stock_single_line, parent, false), fragment);
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {

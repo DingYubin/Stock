@@ -12,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import ruifu.com.shares.BaseFragment;
 import ruifu.com.shares.R;
@@ -43,7 +46,6 @@ public class PortfolioFragment extends BaseFragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("PortfolioFragment", "onCreateView");
         layoutView = inflater.inflate(R.layout.fragment_portfolio,container,false);
-
         portfolioRecyclerView = (RecyclerView)layoutView.findViewById(R.id.stockListView);
         portfolioRecyclerView.setHasFixedSize(true);
         portfolioLayoutManager = new LinearLayoutManager(getActivity());
@@ -112,5 +114,15 @@ public class PortfolioFragment extends BaseFragment implements View.OnClickListe
         getActivity().findViewById(R.id.ly_main_tab_bottom).setVisibility(View.GONE);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d("PortfolioFragment", "onStart");
+        View button = getActivity().findViewById(R.id.ly_main_tab_bottom);
+        if (this.isVisible() && button.getVisibility() == View.GONE) {
+            button.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package ruifu.com.shares.ui;
 
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,9 +43,28 @@ public class StockFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("StockFragment", "onCreateView");
-        layoutView = inflater.inflate(R.layout.stock_page_layout,null);
+        layoutView = inflater.inflate(R.layout.fragment_stock_page,null);
+        layoutView.findViewById(R.id.returnTextView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getFragmentManager();
+                if (fragmentManager != null)
+                    fragmentManager.popBackStack();
+            }
+        });
+        layoutView.findViewById(R.id.refreshTextView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refresh();
+            }
+        });
         TextView stockTitle = (TextView)layoutView.findViewById(R.id.stockNameTitle);
         stockTitle.setText(stock.getName() + "(" + stock.getCode() + ")");
+        refresh();
+        return layoutView;
+    }
+
+    private void refresh() {
         Calendar calendar = Calendar.getInstance();
         DateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm:ss");
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -76,14 +96,12 @@ public class StockFragment extends BaseFragment {
             currentChange.setTextColor(Color.GRAY);
             currentChangeRate.setTextColor(Color.GRAY);
         }
-        return layoutView;
     }
 
     @Override
     public void onPause() {
         super.onPause();
         Log.i("StockFragment", "onPause");
-        getActivity().findViewById(R.id.ly_main_tab_bottom).setVisibility(View.VISIBLE);
 
     }
 
