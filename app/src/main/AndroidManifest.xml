@@ -54,6 +54,15 @@
             android:name=".ui.USAAccountActivity">
         </activity>
         <activity
+            android:name=".ui.SettingAboutActivity">
+        </activity>
+        <activity
+            android:name=".ui.DisclaimerActivity">
+        </activity>
+        <activity
+            android:name=".ui.AccManagerActivity">
+        </activity>
+        <activity
             android:name=".ui.LoginActivity"
             android:configChanges="orientation|keyboard"
             android:label="@string/title_activity_login" >

@@ -39,10 +39,19 @@
     <string name="app_version">4.3.1</string>
     <string name="setting_version">版本</string>
     <string name="setting_feedback_string">意見反饋</string>
-    <string name="setting_recommend_string">应用推薦</string>
+    <string name="setting_recommend_string">把我们的软件推荐给好友</string>
     <string name="setting_clear_cache_string">清除緩存</string>
     <string name="portfolio_refreshbtn_statistics_switch">自选列表刷新按钮显示</string>
     <string name="exit_Process">再按一次退出程序</string>
     <string name="information_collection">资讯收藏</string>
+    <string name="stock">股票</string>
+    <string name="update">更新</string>
+    <string name="setting_update_textview">软件更新</string>
+    <string name="setting_disclaimer_string">免责声明</string>
+    <string name="setting_text_string">瑞富股票软件许可协议</string>
+    <string name="login_account">股票账号</string>
+    <string name="logined_account">已登录</string>
+    <string name="setting_logout_content">退出</string>
+    <string name="login_account_name">账号名称（1234344353453）</string>
 
 </resources>

@@ -86,4 +86,17 @@
     <item name="hk_title_setting" type="id">false</item>
     <item name="us_close_button" type="id">false</item>
     <item name="us_title_setting" type="id">false</item>
+    <item name="setting_about_title_setting" type="id">false</item>
+    <item name="version_close_button" type="id">false</item>
+    <item name="stock_text" type="id">false</item>
+    <item name="setting_disclaimer_textview" type="id">false</item>
+    <item name="setting_text" type="id">false</item>
+    <item name="setting_disclaimer" type="id">false</item>
+    <item name="disclaimer_title_setting" type="id">false</item>
+    <item name="disclaimer_close_button" type="id">false</item>
+    <item name="accmanager_close_button" type="id">false</item>
+    <item name="accmanager_title_setting" type="id">false</item>
+    <item name="setting_login_account" type="id">false</item>
+    <item name="logout_content" type="id">false</item>
+    <item name="logined_accout_id" type="id">false</item>
 </resources>
