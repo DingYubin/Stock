@@ -2,6 +2,7 @@ package ruifu.com.shares.ui;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,9 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import ruifu.com.shares.BaseFragment;
 import ruifu.com.shares.R;
@@ -107,22 +105,14 @@ public class PortfolioFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Log.d("PortfolioFragment", "onClick event, position: " + v.getId());
-        BaseFragment stockFragment = StockFragment.newInstance(getIndex(), portfolioAdapter.getStock(v.getId()));
-        FragmentManager fragmentManager = getActivity().getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(this.getId(), stockFragment);
-        getActivity().findViewById(R.id.ly_main_tab_bottom).setVisibility(View.GONE);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        Intent intent = new Intent(getActivity(), StockActivity.class);
+        intent.putExtra("stock.current", portfolioAdapter.getStock(v.getId()));
+        startActivity(intent);
     }
 
     @Override
     public void onStart() {
         super.onStart();
         Log.d("PortfolioFragment", "onStart");
-        View button = getActivity().findViewById(R.id.ly_main_tab_bottom);
-        if (this.isVisible() && button.getVisibility() == View.GONE) {
-            button.setVisibility(View.VISIBLE);
-        }
     }
 }

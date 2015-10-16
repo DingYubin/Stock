@@ -1,14 +1,17 @@
 package ruifu.com.shares.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by qun on 15-10-13.
  */
-public class Stock {
+public class Stock implements Serializable {
     private String name;
     private String code;
     private int price;
     private int change;
     private boolean isDelisted;
+    StockHistoryData historyData;
 
     public Stock(String name, String code) {
         this.name = name;
