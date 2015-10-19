@@ -30,25 +30,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/id_tab_bottom_news"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:descendantFocusability="beforeDescendants"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:id="@+id/btn_tab_bottom_news"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#0000"
-                android:clickable="false"
-                android:src="@drawable/portfolio_tabbar_btn_b_normal" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/id_tab_bottom_markets"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -64,6 +45,25 @@
                 android:background="#0000"
                 android:clickable="false"
                 android:src="@drawable/portfolio_tabbar_btn_c_normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/id_tab_bottom_news"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:descendantFocusability="beforeDescendants"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/btn_tab_bottom_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:clickable="false"
+                android:src="@drawable/portfolio_tabbar_btn_b_normal" />
 
         </LinearLayout>
 
