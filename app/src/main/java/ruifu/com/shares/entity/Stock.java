@@ -11,7 +11,7 @@ public class Stock implements Serializable {
     private int price;
     private int change;
     private boolean isDelisted;
-    StockHistoryData historyData;
+    StockPriceInfo historyData;
 
     public Stock(String name, String code) {
         this.name = name;
