@@ -53,5 +53,10 @@
     <string name="logined_account">已登录</string>
     <string name="setting_logout_content">退出</string>
     <string name="login_account_name">账号名称（1234344353453）</string>
+    <string name="market_transaction">交易</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="buy_fragment">买入</string>
+    <string name="sale_fragment">卖出</string>
 
 </resources>

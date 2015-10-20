@@ -13,4 +13,8 @@
     <color name="settings_items_selector_bg_d_color">#ff1f2228</color>
     <color name="settings_items_selector_bg_color">#ff272b32</color>
     <color name="settings_items_title_color">#ff3d75b7</color>
+    <color name="white">#ffffffff</color>
+    <color name="text_dark_color">#ff323232</color>
+    <color name="black">#ff000000</color>
+    <color name="text_light_color">#ff8c8b8b</color>
 </resources>
