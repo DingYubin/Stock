@@ -29,7 +29,8 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="15.71"
                 android:layout_weight="1"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:id="@+id/ceilPrice"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,7 +96,8 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="15.11"
                 android:layout_weight="1"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:id="@+id/floorPrice"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -161,7 +163,8 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="4.83亿"
                 android:layout_weight="1"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:id="@+id/tradeMoneyAmount"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

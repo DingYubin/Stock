@@ -13,52 +13,67 @@
             android:layout_weight="1"
             android:background="#2b2b2b"
             android:text="分时"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:id="@+id/timeLineButton"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
             android:textColor="@android:color/darker_gray"
-            android:text="五日" />
+            android:text="五日"
+            android:id="@+id/fiveDaysButton"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
             android:text="日K"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/dailyKButton"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
             android:textColor="@android:color/darker_gray"
-            android:text="周K" />
+            android:text="周K"
+            android:id="@+id/weeklyKButton"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/black"
             android:textColor="@android:color/darker_gray"
-            android:text="月K" />
+            android:text="月K"
+            android:id="@+id/monthlyKButton"/>
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/stockTrendLineTab"
+        android:id="@+id/stockTrendGraphic"
+        android:background="@android:color/black">
+    </RelativeLayout>
+    <!--
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@android:color/black"
         android:layout_below="@+id/stockTrendLineTab"
         android:id="@+id/stockTrendGraphic">
-        <cn.limc.androidcharts.diagram.GridChart
+        <ruifu.com.shares.view.TimesView
             android:id="@+id/stockTimeLineLinearChart"
             android:layout_width="256dp"
-            android:layout_height="150dp" />
-        <cn.limc.androidcharts.diagram.GridChart
-            android:id="@+id/stockTimeLineCandleChart"
+            android:layout_height="256dp"/>
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/stockTimeLineLinearChart"
-            android:layout_alignEnd="@+id/stockTimeLineLinearChart" />
+            android:layout_toEndOf="@+id/stockTimeLineLinearChart"
+            android:layout_alignParentTop="true"
+            >
+
+        </ListView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,4 +133,5 @@
                 android:id="@+id/fifthBuy"/>
         </LinearLayout>
     </RelativeLayout>
+    -->
 </RelativeLayout>

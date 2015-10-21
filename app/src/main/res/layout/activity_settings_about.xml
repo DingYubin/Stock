@@ -50,7 +50,7 @@
 
          <TextView
              android:id="@id/stock_text"
-             android:text="@string/stock"
+             android:text="@string/stockEntity"
              style="@style/setting_text_left_style"
              android:layout_gravity="center_horizontal"
              android:layout_width="71dp"

@@ -1,7 +1,5 @@
 package ruifu.com.shares.ui;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +15,7 @@ import android.view.ViewGroup;
 import ruifu.com.shares.BaseFragment;
 import ruifu.com.shares.R;
 import ruifu.com.shares.adapter.PortfolioAdapter;
-import ruifu.com.shares.entity.Stock;
+import ruifu.com.shares.entity.StockEntity;
 
 public class PortfolioFragment extends BaseFragment implements View.OnClickListener {
     public static BaseFragment newInstance(int index) {
@@ -49,21 +47,20 @@ public class PortfolioFragment extends BaseFragment implements View.OnClickListe
         portfolioLayoutManager = new LinearLayoutManager(getActivity());
         portfolioRecyclerView.setLayoutManager(portfolioLayoutManager);
         portfolioAdapter = new PortfolioAdapter(this,getActivity());
-        Stock[] stocks = new Stock[4];
-        stocks[0] = new Stock("平安银行", "000001");
-        stocks[0].setPrice(1235);
-        stocks[0].setChange(25);
-        stocks[1] = new Stock("招商银行", "600036");
-        stocks[1].setPrice(1806);
-        stocks[1].setChange(-71);
-        stocks[2] = new Stock("五粮液", "000858");
-        stocks[2].setPrice(2573);
-        stocks[2].setDelist(true);
-        stocks[3] = new Stock("中信银行", "601998");
-        stocks[3].setPrice(318);
-        stocks[3].setChange(0);
-        for (int i = 0; i < 4; i++) {
-            portfolioAdapter.addStock(stocks[i % 4]);
+        StockEntity[] stockEntities = new StockEntity[11];
+        stockEntities[0] = new StockEntity("平安银行", "000001");
+        stockEntities[1] = new StockEntity("招商银行", "600036");
+        stockEntities[2] = new StockEntity("五粮液", "000858");
+        stockEntities[3] = new StockEntity("中信银行", "601998");
+        stockEntities[4] = new StockEntity("中国神华", "601088");
+        stockEntities[5] = new StockEntity("雅戈尔", "600177");
+        stockEntities[6] = new StockEntity("长安汽车", "000625");
+        stockEntities[7] = new StockEntity("伊利股份", "600887");
+        stockEntities[8] = new StockEntity("苏宁云商", "002024");
+        stockEntities[9] = new StockEntity("华侨城A", "000069");
+        stockEntities[10] = new StockEntity("TCL集团", "000100");
+        for (int i = 0; i < stockEntities.length; i++) {
+            portfolioAdapter.addStock(stockEntities[i]);
         }
         portfolioRecyclerView.setAdapter(portfolioAdapter);
         return layoutView;
