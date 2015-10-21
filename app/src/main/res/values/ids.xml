@@ -99,4 +99,19 @@
     <item name="setting_login_account" type="id">false</item>
     <item name="logout_content" type="id">false</item>
     <item name="logined_accout_id" type="id">false</item>
+    <item name="transaction" type="id">false</item>
+    <item name="inputcontainer" type="id">false</item>
+    <item name="content_stock" type="id">false</item>
+    <item name="auto_stockcode" type="id">false</item>
+    <item name="stockname" type="id">false</item>
+    <item name="focus" type="id">false</item>
+    <item name="content_price" type="id">false</item>
+    <item name="content_price_sub" type="id">false</item>
+    <item name="content_price_add" type="id">false</item>
+    <item name="stockprice" type="id">false</item>
+    <item name="dieting_title" type="id">false</item>
+    <item name="zhangting_title" type="id">false</item>
+    <item name="inputnum" type="id">false</item>
+    <item name="couldbuy" type="id">false</item>
+    <item name="btn_transaction" type="id">false</item>
 </resources>

@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.networkbench.agent.impl.NBSAppAgent;
+
 import ruifu.com.shares.R;
 
 /**
@@ -44,6 +46,7 @@ public class SplashActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.portfolio_splash_activity);
+        NBSAppAgent.setLicenseKey("ba7765f0d0794187b4085d2cc4988c3e").withLocationServiceEnabled(true).start(this);
         init();
     }
 
