@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ViewPager>
         -->
-        <include layout="@layout/price_info_layout"
+        <include layout="@layout/stock_head_info"
             android:layout_width="match_parent"
             android:layout_height="96dp"
             android:layout_below="@+id/stockBar"

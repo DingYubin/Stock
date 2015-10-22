@@ -192,8 +192,5 @@ public class CMsgHead implements Serializable{
 			System.out.println("getFlag: "+this.getFlag() + ",getVersion: "+this.getVersion() + ",getLength: "+ this.getLength());
 			return false;
 		}
-
-
 	}
-
 }

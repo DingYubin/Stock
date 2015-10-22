@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="100dp"
+    android:layout_height="24dp"
+    android:background="@android:color/black">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="最   高"
+        android:layout_weight="1"
+        android:id="@+id/stockHeadFloorTextName"
+        android:textColor="@android:color/darker_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="15.71"
+        android:id="@+id/stockHeadFloorTextValue"
+        android:layout_weight="1"
+        android:textColor="@android:color/white"/>
+</LinearLayout>
