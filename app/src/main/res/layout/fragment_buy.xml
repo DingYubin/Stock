@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:orientation="vertical"
               tools:context="ruifu.com.shares.ui.BuyFragment"
               android:weightSum="1">
@@ -23,7 +23,7 @@
         <RelativeLayout
             android:id="@id/content_stock"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/weituo_buysale_component_height"
+            android:layout_height="@dimen/common_navigationbar_height"
             android:layout_alignParentTop="true">
 
             <EditText
@@ -35,7 +35,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="true"
                 android:layout_toStartOf="@id/stockname"
-                android:background="@drawable/jiaoyi_input_buy_bg"
+                android:background="@drawable/jiaoyi_input_buy_bg_night"
                 android:gravity="center|left"
                 android:hint="股票代码"
                 android:imeActionId="7"
@@ -74,19 +74,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/jiaoyi_input_buy_bg"
+        android:background="@drawable/jiaoyi_input_buy_bg_night"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@id/content_price"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/weituo_buysale_component_height"
+            android:layout_height="@dimen/common_navigationbar_height"
             android:layout_alignParentTop="true"
             android:tag="0">
 
             <TextView
                 android:id="@id/content_price_sub"
-                android:layout_width="@dimen/weituo_buysale_component_height"
+                android:layout_width="@dimen/common_navigationbar_height"
                 android:layout_height="fill_parent"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/jiaoyi_buy_minus_bg"
@@ -100,7 +100,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/content_price_sub"
                 android:layout_toStartOf="@id/content_price_add"
-                android:background="@drawable/jiaoyi_input_buy_bg"
+                android:background="@drawable/jiaoyi_input_buy_bg_night"
                 android:gravity="center"
                 android:hint="价格"
                 android:maxLength="8"
@@ -110,7 +110,7 @@
 
             <TextView
                 android:id="@id/content_price_add"
-                android:layout_width="@dimen/weituo_buysale_component_height"
+                android:layout_width="@dimen/common_navigationbar_height"
                 android:layout_height="fill_parent"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/jiaoyi_buy_plus_bg"
@@ -162,14 +162,14 @@
         <RelativeLayout
             android:id="@id/content_stock"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/weituo_buysale_component_height"
+            android:layout_height="@dimen/common_navigationbar_height"
             android:layout_alignParentTop="true">
 
             <EditText
                 android:id="@id/auto_stockcode"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/jiaoyi_input_buy_bg"
+                android:background="@drawable/jiaoyi_input_buy_bg_night"
                 android:gravity="center|left"
                 android:hint="数量"
                 android:imeActionId="7"
@@ -206,53 +206,9 @@
         android:tag="6"
         android:background="@drawable/jiaoyi_btn_buy_bg"
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/weituo_buysale_component_height"
+        android:layout_height="@dimen/common_navigationbar_height"
         android:layout_marginTop="@dimen/weituo_transaction_input_middle_interval"
         android:text="买入"/>
 
-    <RelativeLayout
-        android:id="@id/setting_login"
-        android:background="@drawable/settings_shape_corner_updown_selector"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/personal_item_icon_height">
-
-        <TextView
-            android:id="@id/account_setting_text_label"
-            android:layout_width="fill_parent"
-            android:text="买盘五档"
-            style="@style/setting_text_left_style"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"/>
-
-        <TextView
-            android:id="@id/account_seting_image"
-            android:text="卖盘五档"
-            android:paddingRight="5.0dip"
-            android:contentDescription="@null"
-            style="@style/setting_text_left_style"
-            android:layout_alignTop="@id/account_setting_text_label"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="123dp"/>
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <include layout="@layout/quote_order_queue_view"/>
 </LinearLayout>

@@ -26,4 +26,10 @@
     <dimen name="weituo_font_size_larger">15.0dip</dimen>
     <dimen name="weituo_font_size_medium">12.5dip</dimen>
     <dimen name="weituo_transaction_input_middle_interval">8.0dip</dimen>
+    <dimen name="trade_order_queue_item_height">30.0dip</dimen>
+    <dimen name="quote_list_item_height">48.0dip</dimen>
+
+    <dimen name="ft_font_size_1080p_60px">20.0sp</dimen>
+    <dimen name="ft_font_size_34px">17.0sp</dimen>
+
 </resources>

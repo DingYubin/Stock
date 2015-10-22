@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    android:background="@color/page_bg_color"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout android:id="@id/title_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/buy_order_queue_title"
+                android:background="@color/bg_buying_one"
+                android:text="@string/buy_traded"
+                style="@style/futu_quote_broker_title" />
+
+            <TextView
+                android:id="@+id/sell_order_queue_title"
+                android:background="@color/bg_selling"
+                android:text="@string/sell_traded"
+                style="@style/futu_quote_broker_title" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/order_queue_switch_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3.0dip"
+            android:src="@drawable/futu_quote_btn_order_queue_list5_selector"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@id/progress_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@id/traded_grade_progress"
+            android:background="@drawable/progress_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="26.0dip"
+            android:progress="50"
+            android:secondaryProgress="100"
+            android:indeterminate="false"
+            android:progressDrawable="@drawable/gradeprogressbar"
+            style="?android:attr/progressBarStyleHorizontal" />
+
+        <TextView
+            android:textSize="14.0sp"
+            android:textStyle="bold"
+            android:textColor="@color/font_main_msg"
+            android:id="@id/buy_grade_rate"
+            android:paddingLeft="5.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50.00%"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:textSize="14.0sp"
+            android:textStyle="bold"
+            android:textColor="@color/font_main_msg"
+            android:id="@id/sell_grade_rate"
+            android:paddingRight="5.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50.00%"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@id/list_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ListView
+            android:id="@+id/buy_list"
+            android:background="@color/buy_5_10_bg_color"
+            android:scrollbars="none"
+            android:fadingEdge="none"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@null"
+            android:minHeight="@dimen/trade_order_queue_item_height"
+            android:layout_weight="1.0" />
+
+        <ListView
+            android:id="@+id/sell_list"
+            android:background="@color/sell_5_10_bg_color"
+            android:scrollbars="none"
+            android:fadingEdge="none"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@null"
+            android:minHeight="@dimen/trade_order_queue_item_height"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+
+</merge>
