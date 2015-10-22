@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/stockHead"/>
+                android:id="@+id/stockHeadInnerDisc"/>
             <include layout="@layout/stock_head_floor_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
