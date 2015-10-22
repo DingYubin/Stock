@@ -20,7 +20,7 @@ public class PositionFragment extends BaseFragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the quote_order_queue_view for this fragment
         return inflater.inflate(R.layout.fragment_position, container, false);
     }
 

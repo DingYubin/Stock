@@ -53,5 +53,21 @@
         <item name="android:layout_marginRight">10.0dip</item>
     </style>
 
+    <style name="futu_quote_broker_title">
+        <item name="android:textSize">@dimen/ft_font_size_34px</item>
+        <item name="android:textColor">@color/futu_quote_title_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">5.0dip</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">37.0dip</item>
+        <item name="android:layout_weight">0.5</item>
+    </style>
+
+    <style name="ft_font_style_white_1080p_60px_normal">
+        <item name="android:textSize">@dimen/ft_font_size_1080p_60px</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/personal_item_unselect_bg</item>
+    </style>
+
 
 </resources>

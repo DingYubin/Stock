@@ -17,4 +17,13 @@
     <color name="text_dark_color">#ff323232</color>
     <color name="black">#ff000000</color>
     <color name="text_light_color">#ff8c8b8b</color>
+    <color name="page_bg_color">#ff17191e</color>
+    <color name="bg_buying_one">#ff243347</color>
+    <color name="bg_selling">#ff362d25</color>
+    <color name="font_main_msg">#ffd9d9d9</color>
+    <color name="buy_5_10_bg_color">#ff212a32</color>
+    <color name="sell_5_10_bg_color">#ff2b2827</color>
+    <color name="futu_quote_list_item_bg_color_pressed">#ff131519</color>
+    <color name="futu_quote_list_item_bg_color_normal">#ff1e1e26</color>
+    <color name="futu_quote_title_color">#ffb3b8c4</color>
 </resources>

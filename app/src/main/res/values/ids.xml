@@ -114,4 +114,13 @@
     <item name="inputnum" type="id">false</item>
     <item name="couldbuy" type="id">false</item>
     <item name="btn_transaction" type="id">false</item>
+    <item name="title_layout" type="id">false</item>
+    <item name="progress_layout" type="id">false</item>
+    <item name="traded_grade_progress" type="id">false</item>
+    <item name="buy_grade_rate" type="id">false</item>
+    <item name="sell_grade_rate" type="id">false</item>
+    <item name="list_container" type="id">false</item>
+    <item name="updown_rate" type="id">false</item>
+    <item name="buy_rate" type="id">false</item>
+    <item name="numble_rate" type="id">false</item>
 </resources>

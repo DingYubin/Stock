@@ -58,5 +58,8 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="buy_fragment">买入</string>
     <string name="sale_fragment">卖出</string>
+    <string name="buy_traded">买盘五档</string>
+    <string name="sell_traded">卖盘五档</string>
+    <string name="def_value">--</string>
 
 </resources>

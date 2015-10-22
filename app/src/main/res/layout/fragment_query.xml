@@ -4,7 +4,7 @@
              android:layout_height="match_parent"
              tools:context="ruifu.com.shares.ui.BuyFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Update blank fragment quote_order_queue_view -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
