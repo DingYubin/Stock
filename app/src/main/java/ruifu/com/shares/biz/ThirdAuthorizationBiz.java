@@ -14,8 +14,8 @@ import java.util.Date;
 
 import ruifu.com.shares.Global;
 import ruifu.com.shares.entity.CMsgHead;
-import ruifusoft.protocol.User.ThirdPartyLoginRequest;
-import ruifusoft.protocol.User.ThirdPartyLoginResponse;
+import ruifusoft.protocol.user.User.ThirdPartyLoginRequest;
+import ruifusoft.protocol.user.User.ThirdPartyLoginResponse;
 
 /**
  * Created by Administrator on 2015/10/12.

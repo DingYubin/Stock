@@ -123,4 +123,5 @@
     <item name="updown_rate" type="id">false</item>
     <item name="buy_rate" type="id">false</item>
     <item name="numble_rate" type="id">false</item>
+    <item  name="scrollview" type="id">false</item>
 </resources>

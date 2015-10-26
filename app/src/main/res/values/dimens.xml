@@ -31,5 +31,7 @@
 
     <dimen name="ft_font_size_1080p_60px">20.0sp</dimen>
     <dimen name="ft_font_size_34px">17.0sp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
 
 </resources>
