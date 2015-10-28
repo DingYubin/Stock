@@ -1,17 +1,28 @@
 package ruifu.com.shares.ui;
 
-import android.annotation.SuppressLint;
-import android.app.FragmentManager;
+import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import ruifu.com.shares.BaseFragment;
+import ruifu.com.shares.Global;
 import ruifu.com.shares.R;
+import ruifu.com.shares.biz.TransactionBiz;
 
 /**
  * Created by dyb on 15/9/27.
@@ -27,48 +38,92 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         return fragment;
     }
 
-    private View layoutView;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            hiderLoading();
+            int resId = 0;
+            switch (msg.what) {
+                case Global.LOGIN_EMPTY:
+                    resId = R.string.login_pwd_empty;
+                    break;
+                case Global.LOGIN_PASS_TOSHORT:
+                    resId = R.string.login_pass_to_short;
+                    break;
+                case Global.SUCCESS:
+                    resId = R.string.login_success;
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    mActivity.hideFragments(transaction);
+                    TranFragment tranfragment = new TranFragment();
 
-    private BuyFragment buy;
-    private SaleFragment sale;
-    private RevokeFragment revoke;
-    private PositionFragment position;
-    private QueryFragment query;
+                    transaction.replace(R.id.id_content,tranfragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    startActivity(intent);
+//                    finish();
+                    break;
+                case Global.INVALID_REQUEST:
+                    resId = R.string.login_fail;
+                    break;
+                case Global.FAILED:
+                    resId = R.string.login_fail;
+                    break;
+                case Global.NET_PROBLEM:
+                    resId = R.string.login_net;
+                    break;
+                default:
+                    break;
+            }
+            if (resId != 0) {
+                showToast(resId);
+            }
+            super.handleMessage(msg);
+        }
 
+    };
 
-    private LinearLayout my_tab_top_buy;
-    private LinearLayout my_tab_top_salse;
-    private LinearLayout my_tab_top_revoke;
-    private LinearLayout my_tab_top_position;
-    private LinearLayout my_tab_top_query;
+        private FragmentMainActivity mActivity;
+        private TransactionBiz transaction;
+        private View layoutView;
 
-    private FragmentManager fragmentManager;
+        private EditText et_login_name;
+        private EditText et_login_pass;
+        private Button bt_login;
+
+        /*显示加载的提示信息*/
+        public TextView tv_showLoadingText;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = (FragmentMainActivity)activity;
+        mActivity.setHandler(handler);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        layoutView = inflater.inflate(R.layout.fragment_news,container,false);
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            layoutView = inflater.inflate(R.layout.fragment_news, container, false);
+            et_login_name = (EditText) layoutView.findViewById(R.id.nav_et_login_name);
+            et_login_pass = (EditText) layoutView.findViewById(R.id.nav_et_login_pass);
+            bt_login = (Button) layoutView.findViewById(R.id.nav_bt_confirm);
 
-        my_tab_top_buy = (LinearLayout) layoutView.findViewById(R.id.tab_top_buy);
-        my_tab_top_salse = (LinearLayout) layoutView.findViewById(R.id.tab_top_salse);
-        my_tab_top_revoke = (LinearLayout) layoutView.findViewById(R.id.tab_top_revoke);
-        my_tab_top_position = (LinearLayout) layoutView.findViewById(R.id.tab_top_position);
-        my_tab_top_query = (LinearLayout) layoutView.findViewById(R.id.tab_top_query);
+            mRloading = (RelativeLayout) layoutView.findViewById(R.id.rl_nav_loading);
+            transaction = new TransactionBiz(getActivity());
 
-        my_tab_top_buy.setOnClickListener(this);
-        my_tab_top_salse.setOnClickListener(this);
-        my_tab_top_revoke.setOnClickListener(this);
-        my_tab_top_position.setOnClickListener(this);
-        my_tab_top_query.setOnClickListener(this);
-        fragmentManager = getFragmentManager();
-        setTabSelection(0);
-        return layoutView;
-    }
+            et_login_name.setOnClickListener(this);
+            et_login_pass.setOnClickListener(this);
+            bt_login.setOnClickListener(this);
+
+            return layoutView;
+        }
 
     @Override
     public void onStart() {
@@ -81,166 +136,69 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         super.onPause();
     }
 
-    /**
-     * 根据传入的index参数来设置选中的tab页。
-     *
-     */
-    @SuppressLint("NewApi")
-    private void setTabSelection(int index)
-    {
-        // 重置按钮
-        resetBtn();
-        // 开启一个Fragment事务
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
-        hideFragments(transaction);
-        switch (index)
-        {
-            case 0:
-                // 当点击了消息tab时，改变控件的图片和文字颜色
-                ((ImageButton) my_tab_top_buy.findViewById(R.id.btn_tab_top_buy))
-                        .setImageResource(R.drawable.transaction_tabbar_btn_a_pressed);
-                if (buy == null)
-                {
-                    // 如果MessageFragment为空，则创建一个并添加到界面上
-                    buy = new BuyFragment();
-                    transaction.add(R.id.id_content1,buy);
-                } else
-                {
-                    // 如果MessageFragment不为空，则直接将它显示出来
-                    transaction.show(buy);
-                }
-                break;
-            case 1:
-                // 当点击了消息tab时，改变控件的图片和文字颜色
-                ((ImageButton) my_tab_top_salse.findViewById(R.id.btn_tab_top_salse))
-                        .setImageResource(R.drawable.transaction_tabbar_btn_b_normal_press);
-                if (sale == null)
-                {
-                    // 如果MessageFragment为空，则创建一个并添加到界面上
-                    sale = new SaleFragment();
-                    transaction.add(R.id.id_content1, sale);
-                } else
-                {
-                    // 如果MessageFragment不为空，则直接将它显示出来
-                    transaction.show(sale);
-                }
-                break;
-            case 2:
-                // 当点击了动态tab时，改变控件的图片和文字颜色
-                ((ImageButton) my_tab_top_revoke.findViewById(R.id.btn_tab_top_revoke))
-                        .setImageResource(R.drawable.transaction_tabbar_btn_c_press);
-                if (revoke == null)
-                {
-                    // 如果NewsFragment为空，则创建一个并添加到界面上
-                    revoke = new RevokeFragment();
-                    transaction.add(R.id.id_content1, revoke);
-                } else
-                {
-                    // 如果NewsFragment不为空，则直接将它显示出来
-                    transaction.show(revoke);
-                }
-                break;
-            case 3:
-                // 当点击了设置tab时，改变控件的图片和文字颜色
-                ((ImageButton) my_tab_top_position.findViewById(R.id.btn_tab_top_position))
-                        .setImageResource(R.drawable.transaction_tabbar_btn_d_normal_press);
-                if (position == null)
-                {
-                    // 如果SettingFragment为空，则创建一个并添加到界面上
-                    position = new PositionFragment();
-                    transaction.add(R.id.id_content1, position);
-                } else
-                {
-                    // 如果SettingFragment不为空，则直接将它显示出来
-                    transaction.show(position);
-                }
-                break;
-            case 4:
-                // 当点击了设置tab时，改变控件的图片和文字颜色
-                ((ImageButton) my_tab_top_query.findViewById(R.id.btn_tab_top_query))
-                        .setImageResource(R.drawable.transaction_tabbar_btn_e_press);
-                if (query == null)
-                {
-                    // 如果SettingFragment为空，则创建一个并添加到界面上
-                    query = new QueryFragment();
-                    transaction.add(R.id.id_content1, query);
-                } else
-                {
-                    // 如果SettingFragment不为空，则直接将它显示出来
-                    transaction.show(query);
-                }
-                break;
-        }
-        transaction.commit();
-    }
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.nav_bt_confirm:
+                    final String login = et_login_name.getText().toString().trim();
+                    final String pwd = et_login_pass.getText().toString().trim();
+                    login(login, pwd);
+                    break;
 
-        private void resetBtn()
-        {
-            ((ImageButton) my_tab_top_buy.findViewById(R.id.btn_tab_top_buy))
-                    .setImageResource(R.drawable.transaction_tabbar_btn_a_normal);
-            ((ImageButton) my_tab_top_salse.findViewById(R.id.btn_tab_top_salse))
-                    .setImageResource(R.drawable.transaction_tabbar_btn_b_normal);
-            ((ImageButton) my_tab_top_revoke.findViewById(R.id.btn_tab_top_revoke))
-                    .setImageResource(R.drawable.transaction_tabbar_btn_c_normal);
-            ((ImageButton) my_tab_top_position.findViewById(R.id.btn_tab_top_position))
-                    .setImageResource(R.drawable.transaction_tabbar_btn_d_normal);
-            ((ImageButton) my_tab_top_query.findViewById(R.id.btn_tab_top_query))
-                    .setImageResource(R.drawable.transaction_tabbar_btn_e_normal);
+                default:
+                    break;
+            }
+        }
+
+        private void login(final String login, final String pwd) {
+            if (TextUtils.isEmpty(login) || TextUtils.isEmpty(pwd)) {
+                handler.sendEmptyMessage(Global.LOGIN_EMPTY);
+                return;
+            }
+            if (pwd.length() < 6 || pwd.length() > 40) {
+                handler.sendEmptyMessage(Global.LOGIN_PASS_TOSHORT);
+                return;
+            }
+            hiderKeyBoard();
+            showLoading("正在验证登录...");
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+
+                    try {
+                        sleep(2000);
+                        int result = transaction.login(login,pwd);
+                        handler.sendEmptyMessage(result);
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }.start();
+        }
+
+        private void showLoading(String text) {
+            mRloading.setVisibility(View.VISIBLE);
+            tv_showLoadingText = (TextView) layoutView.findViewById(R.id.tv_nav_loading);
+            tv_showLoadingText.setText(text);
+            AlphaAnimation aa = new AlphaAnimation(0.0f, 1.0f);
+            ScaleAnimation sa = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f);
+            AnimationSet set = new AnimationSet(false);
+            set.addAnimation(sa);
+            set.addAnimation(aa);
+            set.setDuration(200);
         }
 
     /**
-     * 将所有的Fragment都置为隐藏状态。
-     *
-     * @param transaction
-     *            用于对Fragment执行操作的事务
+     * 隐藏软键盘
      */
-    @SuppressLint("NewApi")
-    private void hideFragments(FragmentTransaction transaction)
-    {
-        if (buy != null)
-        {
-            transaction.hide(buy);
-        }
-        if (sale != null)
-        {
-            transaction.hide(sale);
-        }
-        if (revoke != null)
-        {
-            transaction.hide(revoke);
-        }
-        if (position != null)
-        {
-            transaction.hide(position);
-        }
-        if (query != null)
-        {
-            transaction.hide(query);
-        }
+    public void hiderKeyBoard(){
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        System.out.println(imm == null);
+        imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId())
-        {
-            case R.id.tab_top_buy:
-                setTabSelection(0);
-                break;
-            case R.id.tab_top_salse:
-                setTabSelection(1);
-                break;
-            case R.id.tab_top_revoke:
-                setTabSelection(2);
-                break;
-            case R.id.tab_top_position:
-                setTabSelection(3);
-                break;
-            case R.id.tab_top_query:
-                setTabSelection(4);
-                break;
-            default:
-                break;
-        }
-    }
+
 }

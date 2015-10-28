@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dip"
-                android:textColor="@android:color/black"
+                android:textColor="@color/personal_item_selected_bg"
                 android:textSize="24px" />
         </LinearLayout>
     </RelativeLayout>

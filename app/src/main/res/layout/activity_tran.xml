@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/setting_backgroundcolor"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:background="@color/common_top_title_bg_color"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip">
+
+        <TextView
+            android:gravity="center"
+            android:id="@id/transaction"
+            android:text="@string/market_transaction"
+            style="@style/setting_title_label_style" />
+    </RelativeLayout>
+
+    <include layout="@layout/top_bar"/>
+
+    <FrameLayout
+        android:id="@+id/id_content1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.50"
+        android:background="@color/content">
+    </FrameLayout>
+
+</LinearLayout>

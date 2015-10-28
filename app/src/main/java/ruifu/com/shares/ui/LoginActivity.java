@@ -71,7 +71,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                     resId = R.string.login_success;
                     finish();
                     break;
-                case Global.FAIL:
+                case Global.FAILED:
                     resId = R.string.login_fail;
                     break;
                 case Global.NET_PROBLEM:

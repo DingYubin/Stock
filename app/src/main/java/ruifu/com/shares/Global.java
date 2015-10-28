@@ -9,8 +9,14 @@ public class Global {
      */
     public static final int NET_PROBLEM = -1;
     public static final int SUCCESS = 0;
-    public static final int FAIL = 1;
-    public static final int LOGIN_EMPTY = 2;
-    public static final int LOGIN_PASS_TOSHORT = 3;
+    public static final int FAILED = 1;
+    public static final int INVALID_REQUEST = 2;
+    public static final int LOGIN_EMPTY = 6;
+    public static final int LOGIN_PASS_TOSHORT = 7;
 
+    /*
+    交易命令码
+     */
+    public static final int TRADE_USERLOGON_REQ = 30001; //交易请求码
+    public static final int TRADE_USERLOGON_RESP = 30002;
 }

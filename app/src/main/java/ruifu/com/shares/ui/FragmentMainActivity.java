@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,16 +17,19 @@ import android.widget.Toast;
 import java.util.List;
 
 import ruifu.com.shares.BaseActivity;
+import ruifu.com.shares.Global;
 import ruifu.com.shares.MyApplication;
 import ruifu.com.shares.R;
 
 public class FragmentMainActivity extends BaseActivity implements OnClickListener
 {
     private PortfolioFragment mTab01;
-    private NewsFragment mTab02;
-    private MarketsFragment mTab03;
+    private MarketsFragment mTab02;
+    private NewsFragment mTab03;
     private MeFragment mTab04;
-
+    private TranFragment mTab05;
+    private Handler mHandler;
+    SharedPreferences sp;
     private long exitTime = 0;
     /**
      * 底部四个按钮
@@ -38,6 +43,9 @@ public class FragmentMainActivity extends BaseActivity implements OnClickListene
      */
     private FragmentManager fragmentManager;
 
+    public void setHandler(Handler handler){
+        this.mHandler = handler;
+    }
     @Override
     public void setUpView() {
         mTabBtnPortfolio = (LinearLayout) findViewById(R.id.id_tab_bottom_portfolio);
@@ -65,9 +73,25 @@ public class FragmentMainActivity extends BaseActivity implements OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
-
+        sp = getSharedPreferences("transaction_login", Activity.MODE_PRIVATE);
     }
 
+//    @Override
+//    public void onAttachFragment(Fragment fragment) {
+//        super.onAttachFragment(fragment);
+//        Log.i("FragmentMainActivity", "onAttachFragment");
+//        if (mTab01 == null && fragment instanceof PortfolioFragment){
+//            mTab01 = (PortfolioFragment) fragment;
+//        }else if (mTab02 == null && fragment instanceof MarketsFragment){
+//            mTab02 = (MarketsFragment) fragment;
+//        }else if (mTab03 == null && fragment instanceof NewsFragment){
+//            mTab03 = (NewsFragment) fragment;
+//        }else if (mTab04 == null && fragment instanceof MeFragment ){
+//            mTab04 = (MeFragment) fragment;
+//        }else if (mTab05 == null && fragment instanceof TranFragment){
+//            mTab05 = (TranFragment) fragment;
+//        }
+//    }
 
     @Override
     public void onClick(View v)
@@ -78,10 +102,10 @@ public class FragmentMainActivity extends BaseActivity implements OnClickListene
                 setTabSelection(0);
                 break;
             case R.id.id_tab_bottom_news:
-                setTabSelection(1);
+                setTabSelection(2);
                 break;
             case R.id.id_tab_bottom_markets:
-                setTabSelection(2);
+                setTabSelection(1);
                 break;
             case R.id.id_tab_bottom_me:
                 setTabSelection(3);
@@ -124,12 +148,13 @@ public class FragmentMainActivity extends BaseActivity implements OnClickListene
                 break;
             case 1:
                 // 当点击了消息tab时，改变控件的图片和文字颜色
-                ((ImageButton) mTabBtnNews.findViewById(R.id.btn_tab_bottom_news))
-                        .setImageResource(R.drawable.portfolio_tabbar_btn_b_pressed);
+                ((ImageButton) mTabBtnMarkets.findViewById(R.id.btn_tab_bottom_markets))
+                        .setImageResource(R.drawable.portfolio_tabbar_btn_c_pressed);
+
                 if (mTab02 == null)
                 {
                     // 如果MessageFragment为空，则创建一个并添加到界面上
-                    mTab02 = new NewsFragment();
+                    mTab02 = new MarketsFragment();
                     transaction.add(R.id.id_content, mTab02);
                 } else
                 {
@@ -139,18 +164,33 @@ public class FragmentMainActivity extends BaseActivity implements OnClickListene
                 break;
             case 2:
                 // 当点击了动态tab时，改变控件的图片和文字颜色
-                ((ImageButton) mTabBtnMarkets.findViewById(R.id.btn_tab_bottom_markets))
-                        .setImageResource(R.drawable.portfolio_tabbar_btn_c_pressed);
-                if (mTab03 == null)
-                {
-                    // 如果NewsFragment为空，则创建一个并添加到界面上
-                    mTab03 = new MarketsFragment();
-                    transaction.add(R.id.id_content, mTab03);
-                } else
-                {
-                    // 如果NewsFragment不为空，则直接将它显示出来
-                    transaction.show(mTab03);
+                ((ImageButton) mTabBtnNews.findViewById(R.id.btn_tab_bottom_news))
+                        .setImageResource(R.drawable.portfolio_tabbar_btn_b_pressed);
+                int result = sp.getInt("status", Global.FAILED);
+
+                if (result== Global.SUCCESS){
+                    if (mTab05 == null)
+                    {
+                        // 如果NewsFragment为空，则创建一个并添加到界面上
+                        mTab05 = new TranFragment();
+                        transaction.add(R.id.id_content, mTab05);
+                    } else {
+                        // 如果NewsFragment不为空，则直接将它显示出来
+                        transaction.show(mTab05);
+                    }
+                }else {
+                    if (mTab03 == null)
+                    {
+                        // 如果NewsFragment为空，则创建一个并添加到界面上
+                        mTab03 = new NewsFragment();
+                        transaction.add(R.id.id_content, mTab03);
+                    } else
+                    {
+                        // 如果NewsFragment不为空，则直接将它显示出来
+                        transaction.show(mTab03);
+                    }
                 }
+
                 break;
             case 3:
                 // 当点击了设置tab时，改变控件的图片和文字颜色
@@ -193,7 +233,7 @@ public class FragmentMainActivity extends BaseActivity implements OnClickListene
      *            用于对Fragment执行操作的事务
      */
     @SuppressLint("NewApi")
-    private void hideFragments(FragmentTransaction transaction)
+    public void hideFragments(FragmentTransaction transaction)
     {
         if (mTab01 != null)
         {
@@ -211,7 +251,10 @@ public class FragmentMainActivity extends BaseActivity implements OnClickListene
         {
             transaction.hide(mTab04);
         }
-
+        if (mTab05 !=null)
+        {
+            transaction.hide(mTab05);
+        }
     }
 
     @Override

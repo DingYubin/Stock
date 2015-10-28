@@ -119,7 +119,7 @@ public class MeFragment extends BaseFragment implements OnClickListener {
         switch (v.getId())
         {
             case R.id.cover_user_photo:
-                int result = sp.getInt("status",-1);
+                int result = sp.getInt("status",Global.FAILED);
                 if (result== Global.SUCCESS){
                     Intent intent = new Intent(getActivity(), ApproveActivity.class);
                     startActivity(intent);

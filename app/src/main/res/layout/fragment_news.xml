@@ -13,18 +13,80 @@
         <TextView
             android:gravity="center"
             android:id="@id/transaction"
-            android:text="@string/market_transaction"
+            android:text="@string/market_transaction_login"
             style="@style/setting_title_label_style" />
     </RelativeLayout>
 
-    <include layout="@layout/top_bar"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-    <FrameLayout
-        android:id="@+id/id_content1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.50"
-        android:background="@color/content">
-    </FrameLayout>
+        <EditText
+            android:id="@+id/nav_et_login_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="12dip"
+            android:layout_marginTop="6dip"
+            android:hint="@string/nav_login_name_hint"
+            android:textColorHint="@color/buy_5_10_bg_color"
+            android:textColor="@color/personal_item_divider_edage_color"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
 
+        <EditText
+            android:id="@+id/nav_et_login_pass"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="12dip"
+            android:layout_marginTop="6dip"
+            android:hint="@string/nav_login_pass_hint"
+            android:imeOptions="actionDone"
+            android:password="true"
+            android:textColorHint="@color/buy_5_10_bg_color"
+            android:textColor="@color/personal_item_divider_edage_color"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/nav_tv_forget_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="4dip"
+            android:clickable="true"
+            android:text="@string/nav_forget_pass"
+            android:textColor="@color/personal_item_divider_edage_color" />
+
+        <View
+            android:layout_width="130dip"
+            android:layout_height="1dip"
+            android:layout_marginLeft="12dip"
+            android:background="@android:color/black" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/nav_bt_ret"
+                android:layout_width="120dip"
+                android:layout_height="40dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dip"
+                android:text="@string/ret" />
+
+            <Button
+                android:id="@+id/nav_bt_confirm"
+                android:layout_width="120dip"
+                android:layout_height="40dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/nav_login"
+                android:layout_marginRight="4dip" />
+        </LinearLayout>
+    </LinearLayout>
+        <include layout="@layout/nav_loading" />
 </LinearLayout>

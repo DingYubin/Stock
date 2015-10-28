@@ -58,7 +58,7 @@ public class ThirdAuthorizationBiz{
      */
     public int login() {
         //body
-        int result = Global.FAIL;
+        int result = Global.FAILED;
         loginTime = System.currentTimeMillis();
 //        ThirdPartyLoginRequest body = ThirdPartyLoginRequest.newBuilder().
 //                setPlatformType("weixin").setPlatformUid("ot4TWwYsXmDRStGfsYAJBtrCl1B8").
@@ -129,7 +129,7 @@ public class ThirdAuthorizationBiz{
                 Log.i(TAG, "status = " + result + ", new_user = " + new_user + ", user_id = " + user_id + ", session = " + session);
 
             } else {
-                result = Global.FAIL;
+                result = Global.FAILED;
                 Log.i(TAG, "登录出错" + new Date(System.currentTimeMillis()));
             }
 
